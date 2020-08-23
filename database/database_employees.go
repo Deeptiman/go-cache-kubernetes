@@ -10,17 +10,18 @@ import (
 )
 
 const (
-	MONGODB_DATABASE   = "records"
-	MONGODB_COLLECTION = "employees"
+	MONGODB_DATABASE       = "records"
+	MONGODB_COLLECTION     = "employees"
+	MONGODB_COLLECTION_KEY = "email"
 )
 
 type Employee struct {
-	ID         int    `json:"id"`
-	Name       string `json:"name"`
-	Email      string `json:"email"`
-	Company    string `json:"company"`
-	Occupation string `json:"occupation"`
-	Salary     string `json:"salary"`
+	ID         int    `json:"id" validate:"required,gt=99"`
+	Name       string `json:"name" validate:"required"`
+	Email      string `json:"email" validate:"required,email"`
+	Company    string `json:"company" validate:"required"`
+	Occupation string `json:"occupation" validate:"required"`
+	Salary     string `json:"salary" validate:"required"`
 }
 
 type EmployeeDB struct {
@@ -60,28 +61,4 @@ func (e *EmployeeDB) GetCollection() (*mongo.Collection, error) {
 	employeeCollection := client.Database(MONGODB_DATABASE).Collection(MONGODB_COLLECTION)
 
 	return employeeCollection, nil
-}
-
-func (e *EmployeeDB) GetEmployeeBucket() {
-
-}
-
-// CreateEmployee method
-func (e *EmployeeDB) CreateEmployee(employee *Employee) error {
-
-	empCollection, err := e.GetCollection()
-	if err != nil {
-		return fmt.Errorf("Unable to create collection - %s", err.Error())
-	}
-
-	fmt.Println("Insert MongoDB Employee - ", employee)
-
-	insertResult, err := empCollection.InsertOne(context.TODO(), employee)
-	if err != nil {
-		return fmt.Errorf("Unable to create employee - %s", err.Error())
-	}
-
-	fmt.Println("Inserted a single document: ", insertResult)
-
-	return nil
 }

@@ -1,4 +1,6 @@
 vendor
 vendor.orig
 go-data-caching-service
-node
+node.txt
+go.mod
+go.sum

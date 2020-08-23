@@ -17,7 +17,7 @@ func (e *EmployeeDB) UpdateEmployee(employee *Employee) error {
 
 	_, err = empCollection.UpdateMany(
 		context.TODO(),
-		bson.M{"email": employee.Email},
+		bson.M{MONGODB_COLLECTION_KEY: employee.Email},
 		bson.D{
 			{"$set", bson.D{
 				{"id", employee.ID},

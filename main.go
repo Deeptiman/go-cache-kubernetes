@@ -7,10 +7,9 @@ import (
 
 	"github.com/go-data-caching-service/database"
 	"github.com/go-data-caching-service/handlers"
+	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/hashicorp/go-hclog"
-
-	gohandlers "github.com/gorilla/handlers"
 )
 
 var address *string

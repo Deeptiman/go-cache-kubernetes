@@ -49,7 +49,7 @@ func (e *EmployeeDB) GetEmployeeByEmail(email *string) (*Employee, error) {
 		return nil, fmt.Errorf("Unable to create collection - %s", err.Error())
 	}
 
-	filter := bson.D{{"email", email}}
+	filter := bson.D{{MONGODB_COLLECTION_KEY, email}}
 
 	var employee *Employee
 
