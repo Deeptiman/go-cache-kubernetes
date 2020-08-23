@@ -74,6 +74,8 @@ func (e *EmployeeDB) CreateEmployee(employee *Employee) error {
 		return fmt.Errorf("Unable to create collection - %s", err.Error())
 	}
 
+	fmt.Println("Insert MongoDB Employee - ", employee)
+
 	insertResult, err := empCollection.InsertOne(context.TODO(), employee)
 	if err != nil {
 		return fmt.Errorf("Unable to create employee - %s", err.Error())

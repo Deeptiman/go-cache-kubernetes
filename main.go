@@ -33,6 +33,13 @@ func main() {
 	getEmpRequest.HandleFunc("/api/get_employee_by_email", handlers.GetEmployeeByEmail)
 	getEmpRequest.HandleFunc("/api/get_all_employees", handlers.GetAllEmployees)
 
+	updateEmpRequest := router.Methods(http.MethodPut).Subrouter()
+	updateEmpRequest.HandleFunc("/api/update_employee", handlers.UpdateEmployee)
+	updateEmpRequest.Use(handlers.ResponseValidator)
+
+	deleteEmpRequest := router.Methods(http.MethodDelete).Subrouter()
+	deleteEmpRequest.HandleFunc("/api/delete_employee", handlers.DeleteEmployeeByEmail)
+
 	cors := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"*"}))
 
 	log := hclog.Default()

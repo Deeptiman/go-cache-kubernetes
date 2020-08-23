@@ -18,7 +18,7 @@ func (empHandler *EmployeesHandler) CreateEmployee(rw http.ResponseWriter, r *ht
 	err := empHandler.empDatabase.CreateEmployee(empData)
 
 	if err != nil {
-		respondJSON(rw, http.StatusBadRequest, map[string]string{"error": err.Error()})
+		respondJSON(rw, http.StatusBadRequest, map[string]string{"error_code": err.Error()})
 	}
 
 	respondJSON(rw, http.StatusCreated, map[string]string{"success": "Employee created successfully"})

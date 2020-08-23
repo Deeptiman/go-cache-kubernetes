@@ -19,7 +19,7 @@ func (empHandler *EmployeesHandler) ResponseValidator(request http.Handler) http
 
 		err := DecodeJSON(r.Body, &empDB)
 		if err != nil {
-			respondJSON(rw, http.StatusBadRequest, map[string]string{"error_response": err.Error()})
+			respondJSON(rw, http.StatusBadRequest, map[string]string{"error": err.Error()})
 			return
 		}
 
@@ -32,7 +32,7 @@ func (empHandler *EmployeesHandler) ResponseValidator(request http.Handler) http
 
 func respondJSON(rw http.ResponseWriter, status int, payload interface{}) {
 
-	rw.Header().Add("Content-Type", "application/json")
+	rw.Header().Set("Content-Type", "application/json")
 	rw.WriteHeader(status)
 	json.NewEncoder(rw).Encode(payload)
 	EncodeJSON(rw, payload)
