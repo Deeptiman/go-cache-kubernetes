@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.service.type: LoadBalancer
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: gocache
+  name: gocache
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: ./kompose convert
+        kompose.service.type: LoadBalancer
+        kompose.version: 1.19.0 (f63a961c)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: gocache
+    spec:
+      containers:
+      - env:
+        - name: GET_HOST_FROM
+          value: dns
+        image: deeptiman1991/go-cache
+        name: gocache
+        ports:
+        - containerPort: 5000
+        resources: {}
+        volumeMounts:
+        - mountPath: /go/src/go-cache
+          name: gocache-claim0
+      hostname: gocache
+      restartPolicy: Always
+      volumes:
+      - name: gocache-claim0
+        persistentVolumeClaim:
+          claimName: gocache-claim0
+status: {}

@@ -10,9 +10,10 @@ import (
 )
 
 const (
-	MONGODB_DATABASE       = "records"
-	MONGODB_COLLECTION     = "employees"
-	MONGODB_COLLECTION_KEY = "email"
+	MONGODB_CONNECTION_STRING = "mongodb://mongod-app-0.mongodb-svc.default.svc.cluster.local" //"mongodb://localhost:27017"
+	MONGODB_DATABASE          = "records"
+	MONGODB_COLLECTION        = "employees"
+	MONGODB_COLLECTION_KEY    = "email"
 )
 
 type Employee struct {
@@ -35,7 +36,11 @@ func (e *EmployeeDB) ConnectDB() (*mongo.Client, error) {
 
 	fmt.Println("Connect to MongoDB")
 
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.NewClient(options.Client().ApplyURI(MONGODB_CONNECTION_STRING).
+		SetAuth(options.Credential{
+			Username: "admin", Password: "admin123",
+		}))
+
 	if err != nil {
 		return nil, fmt.Errorf("Unable to create mongo client - %s", err.Error())
 	}
@@ -47,7 +52,7 @@ func (e *EmployeeDB) ConnectDB() (*mongo.Client, error) {
 		return nil, fmt.Errorf("Unable to connect mongo client - %s", err.Error())
 	}
 
-	fmt.Println("Connected to MongoDB successfully")
+	fmt.Println("MongoDB Connected Successfully")
 
 	return client, nil
 }

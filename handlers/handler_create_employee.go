@@ -5,7 +5,7 @@ import (
 
 	"github.com/hashicorp/go-hclog"
 
-	"github.com/go-data-caching-service/database"
+	"github.com/go-cache/database"
 )
 
 func (empHandler *EmployeesHandler) CreateEmployee(rw http.ResponseWriter, r *http.Request) {

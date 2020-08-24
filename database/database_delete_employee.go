@@ -17,7 +17,7 @@ func (e *EmployeeDB) DeleteEmployeeByEmail(employee *Employee) error {
 
 	_, err = empCollection.DeleteMany(
 		context.TODO(),
-		bson.M{"email": employee.Email})
+		bson.M{MONGODB_COLLECTION_KEY: employee.Email})
 
 	if err != nil {
 		return fmt.Errorf("Unable to delete employee - %s", err.Error())

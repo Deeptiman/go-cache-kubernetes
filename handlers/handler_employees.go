@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/go-data-caching-service/database"
+	"github.com/go-cache/database"
 )
 
 type EmployeesHandler struct {

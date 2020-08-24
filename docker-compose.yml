@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  gocache:
+    container_name: gocache
+    image: deeptiman1991/go-cache
+    hostname: gocache
+    build:
+        context: .
+        dockerfile: Dockerfile    
+    environment: 
+        GET_HOST_FROM: dns
+    networks:
+        - gocachenet
+    volumes: 
+        - .:/go/src/go-cache
+    ports:
+        - 5000:5000
+    labels:
+      kompose.service.type: LoadBalancer
+
+networks: 
+    gocachenet:
+        driver: bridge
+
+
+volumes:
+  db-data:

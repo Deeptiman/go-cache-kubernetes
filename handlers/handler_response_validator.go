@@ -7,7 +7,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/go-data-caching-service/database"
+	"github.com/go-cache/database"
 	"github.com/go-playground/validator/v10"
 )
 

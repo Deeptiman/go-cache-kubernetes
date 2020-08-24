@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-data-caching-service/database"
-	"github.com/go-data-caching-service/handlers"
+	"github.com/go-cache/database"
+	"github.com/go-cache/handlers"
 	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/hashicorp/go-hclog"
@@ -16,7 +16,7 @@ var address *string
 
 func main() {
 
-	port := ":4000"
+	port := ":5000"
 	address = &port
 
 	db := database.InitializeEmpDB()
@@ -52,7 +52,7 @@ func main() {
 		IdleTimeout:  120 * time.Second,
 	}
 
-	log.Info("Starting server on port 4000")
+	log.Info("Starting server on port 5000")
 
 	err := server.ListenAndServe()
 	if err != nil {
