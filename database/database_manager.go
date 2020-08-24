@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	MONGODB_CONNECTION_STRING = "mongodb://mongod-app-0.mongodb-svc.default.svc.cluster.local" //"mongodb://localhost:27017"
+	MONGODB_CONNECTION_STRING = "mongodb://mongod-app-0.mongodb-svc.default.svc.cluster.local" //"mongodb://localhost:27017" //
 	MONGODB_DATABASE          = "records"
 	MONGODB_COLLECTION        = "employees"
 	MONGODB_COLLECTION_KEY    = "email"
@@ -26,10 +26,14 @@ type Employee struct {
 }
 
 type EmployeeDB struct {
+	redisCache *RedisCache
 }
 
-func InitializeEmpDB() *EmployeeDB {
-	return &EmployeeDB{}
+func InitializeDBManager() *EmployeeDB {
+
+	redisCache, _ := InitializeCacheClient()
+
+	return &EmployeeDB{redisCache}
 }
 
 func (e *EmployeeDB) ConnectDB() (*mongo.Client, error) {
@@ -40,6 +44,8 @@ func (e *EmployeeDB) ConnectDB() (*mongo.Client, error) {
 		SetAuth(options.Credential{
 			Username: "admin", Password: "admin123",
 		}))
+
+	//client, err := mongo.NewClient(options.Client().ApplyURI(MONGODB_CONNECTION_STRING))
 
 	if err != nil {
 		return nil, fmt.Errorf("Unable to create mongo client - %s", err.Error())

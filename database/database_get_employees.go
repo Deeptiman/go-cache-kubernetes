@@ -25,7 +25,6 @@ func (e *EmployeeDB) GetAllEmployees() ([]*Employee, error) {
 	}
 
 	var results []*Employee
-
 	for empRecords.Next(context.TODO()) {
 
 		var employee Employee
@@ -42,7 +41,7 @@ func (e *EmployeeDB) GetAllEmployees() ([]*Employee, error) {
 }
 
 //GetEmployeeByEmail method
-func (e *EmployeeDB) GetEmployeeByEmail(email *string) (*Employee, error) {
+func (e *EmployeeDB) GetEmployeeByEmail(email string) (*Employee, error) {
 
 	empCollection, err := e.GetCollection()
 	if err != nil {
@@ -53,9 +52,18 @@ func (e *EmployeeDB) GetEmployeeByEmail(email *string) (*Employee, error) {
 
 	var employee *Employee
 
-	err = empCollection.FindOne(context.TODO(), filter).Decode(&employee)
-	if err != nil {
-		return nil, fmt.Errorf("Unable to find employee - %s", err.Error())
+	cacheEmployee, err := e.redisCache.Get(email)
+
+	if cacheEmployee == nil {
+		fmt.Println("Loading from MongoDB ", cacheEmployee)
+		err = empCollection.FindOne(context.TODO(), filter).Decode(&employee)
+		if err != nil {
+			return nil, fmt.Errorf("Unable to find employee - %s", err.Error())
+		}
+		e.redisCache.Set(email, employee)
+	} else {
+		fmt.Println("Loading from Redis Cache ", cacheEmployee)
+		employee = cacheEmployee
 	}
 
 	return employee, nil

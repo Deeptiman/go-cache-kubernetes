@@ -8,14 +8,14 @@ import (
 	"github.com/go-cache/database"
 )
 
-func (empHandler *EmployeesHandler) CreateEmployee(rw http.ResponseWriter, r *http.Request) {
+func (handlers *Handlers) CreateEmployee(rw http.ResponseWriter, r *http.Request) {
 
 	empData := r.Context().Value(KeyEmp{}).(*database.Employee)
 
 	log := hclog.Default()
 	log.Info("Handler CreateEmployee : %#v\n", empData)
 
-	err := empHandler.empDatabase.CreateEmployee(empData)
+	err := handlers.database.CreateEmployee(empData)
 
 	if err != nil {
 		respondJSON(rw, http.StatusBadRequest, map[string]string{"error_code": err.Error()})

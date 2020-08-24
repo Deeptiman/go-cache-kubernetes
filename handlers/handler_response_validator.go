@@ -21,7 +21,7 @@ type ValidationError struct {
 
 type ValidationErrors []ValidationError
 
-func (empHandler *EmployeesHandler) ResponseValidator(request http.Handler) http.Handler {
+func (handlers *Handlers) ResponseValidator(request http.Handler) http.Handler {
 
 	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 

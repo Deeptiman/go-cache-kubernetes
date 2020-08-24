@@ -9,7 +9,7 @@ import (
 	"github.com/go-cache/database"
 )
 
-func (empHandler *EmployeesHandler) GetAllEmployees(rw http.ResponseWriter, r *http.Request) {
+func (handlers *Handlers) GetAllEmployees(rw http.ResponseWriter, r *http.Request) {
 
 	var empDB *database.Employee
 
@@ -18,7 +18,7 @@ func (empHandler *EmployeesHandler) GetAllEmployees(rw http.ResponseWriter, r *h
 	log := hclog.Default()
 	log.Info("Handler GetAllEmployee : %#v\n", empDB)
 
-	employees, err := empHandler.empDatabase.GetAllEmployees()
+	employees, err := handlers.database.GetAllEmployees()
 	if err != nil {
 		respondJSON(rw, http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
@@ -26,7 +26,7 @@ func (empHandler *EmployeesHandler) GetAllEmployees(rw http.ResponseWriter, r *h
 	respondJSON(rw, http.StatusOK, employees)
 }
 
-func (empHandler *EmployeesHandler) GetEmployeeByEmail(rw http.ResponseWriter, r *http.Request) {
+func (handlers *Handlers) GetEmployeeByEmail(rw http.ResponseWriter, r *http.Request) {
 
 	var empDB *database.Employee
 
@@ -35,7 +35,7 @@ func (empHandler *EmployeesHandler) GetEmployeeByEmail(rw http.ResponseWriter, r
 	log := hclog.Default()
 	log.Info("Handler GetEmployeeByEmail : %#v\n", empDB)
 
-	employee, err := empHandler.empDatabase.GetEmployeeByEmail(&empDB.Email)
+	employee, err := handlers.database.GetEmployeeByEmail(empDB.Email)
 	if err != nil {
 		respondJSON(rw, http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}

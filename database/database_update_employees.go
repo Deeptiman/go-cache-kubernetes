@@ -32,5 +32,7 @@ func (e *EmployeeDB) UpdateEmployee(employee *Employee) error {
 		return fmt.Errorf("Unable to update employee - %s", err.Error())
 	}
 
+	e.redisCache.Set(employee.Email, employee)
+
 	return nil
 }

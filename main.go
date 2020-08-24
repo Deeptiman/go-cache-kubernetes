@@ -19,8 +19,8 @@ func main() {
 	port := ":5000"
 	address = &port
 
-	db := database.InitializeEmpDB()
-	handlers := handlers.InitializeEmpHandlers(db)
+	db := database.InitializeDBManager()
+	handlers := handlers.InitializeHandlers(db)
 
 	router := mux.NewRouter()
 
