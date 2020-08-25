@@ -14,13 +14,17 @@ type RedisCache struct {
 	log         hclog.Logger
 }
 
+const (
+	LOCAL_ADDR  = "localhost:6379"
+	SERVER_ADDR = "redis.default.svc.cluster.local:6379"
+)
+
 var ctx = context.Background()
 
 func InitializeCacheClient() (*RedisCache, error) {
 
 	rdsClient := redis.NewClient(&redis.Options{
-		//Addr: "redis.default.svc.cluster.local:6379",
-		Addr:     "localhost:6379",
+		Addr:     SERVER_ADDR,
 		Password: "",
 		DB:       0,
 	})
