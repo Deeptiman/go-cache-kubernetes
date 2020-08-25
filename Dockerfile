@@ -2,10 +2,6 @@ FROM golang:1.12 as builder
 
 # Set Environment Variables
 ENV HOME /app
-<<<<<<< HEAD
-ENV CGO_ENABLED 0
-=======
->>>>>>> Integrated Kafka in the local environment[Producer, Consumer], Swagger API documentation implemented, Refractored the code, Add basic Unit Test
 ENV GOOS linux
 
 WORKDIR /app
