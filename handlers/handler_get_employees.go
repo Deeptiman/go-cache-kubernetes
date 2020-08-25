@@ -1,44 +1,53 @@
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
-
-	"github.com/hashicorp/go-hclog"
 
 	"github.com/go-cache/database"
 )
 
-func (handlers *Handlers) GetAllEmployees(rw http.ResponseWriter, r *http.Request) {
+// swagger:route GET /api employees  get_all_employees
+// Return the list of employees details
+// responses:
+// 		200: employeeResponse
+//		404: errorResponse
+// GET request GetAllEmployees
+func (h *Handlers) GetAllEmployees(rw http.ResponseWriter, r *http.Request) {
 
-	var empDB *database.Employee
-
-	_ = json.NewDecoder(r.Body).Decode(&empDB)
-
-	log := hclog.Default()
-	log.Info("Handler GetAllEmployee : %#v\n", empDB)
-
-	employees, err := handlers.database.GetAllEmployees()
+	h.log.Info("GetAllEmployees Request")
+	employees, err := h.database.GetAllEmployees()
 	if err != nil {
-		respondJSON(rw, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		h.respondJSON(rw, http.StatusInternalServerError, &ServerError{Error: err.Error()})
+		return
 	}
-
-	respondJSON(rw, http.StatusOK, employees)
+	h.respondJSON(rw, http.StatusOK, employees)
 }
 
-func (handlers *Handlers) GetEmployeeByEmail(rw http.ResponseWriter, r *http.Request) {
+// swagger:route GET /api/{id} employees  get_employee_by_id
+// Return the employee details for the id
+// responses:
+// 		200: employeeResponse
+//		404: errorResponse
+// GET request GetEmployeeByID
+func (h *Handlers) GetEmployeeByID(rw http.ResponseWriter, r *http.Request) {
 
-	var empDB *database.Employee
+	id := getEmployeeID(r)
 
-	_ = json.NewDecoder(r.Body).Decode(&empDB)
+	h.log.Info("GetEmployeeByID", "id", id)
 
-	log := hclog.Default()
-	log.Info("Handler GetEmployeeByEmail : %#v\n", empDB)
+	employee, err := h.database.GetEmployeeByID(id)
 
-	employee, err := handlers.database.GetEmployeeByEmail(empDB.Email)
-	if err != nil {
-		respondJSON(rw, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+	switch err {
+	case nil:
+	case database.ErrEmployeeNotFound:
+		h.log.Error("Unable to find employee", "error", err)
+		h.respondJSON(rw, http.StatusNotFound, &ServerError{Error: err.Error()})
+		return
+	default:
+		h.log.Error("Error while find employee", "error", err)
+		h.respondJSON(rw, http.StatusInternalServerError, &ServerError{Error: err.Error()})
+		return
 	}
 
-	respondJSON(rw, http.StatusOK, employee)
+	h.respondJSON(rw, http.StatusOK, employee)
 }

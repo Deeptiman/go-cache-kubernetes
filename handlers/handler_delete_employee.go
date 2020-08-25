@@ -1,27 +1,44 @@
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
-
-	"github.com/hashicorp/go-hclog"
 
 	"github.com/go-cache/database"
 )
 
-func (handlers *Handlers) DeleteEmployeeByEmail(rw http.ResponseWriter, r *http.Request) {
+// swagger:route DELETE /api/{id} employees  delete_employee
+// Delete the employee details using the id
+// responses:
+// 		201: noContentResponse
+//		404: errorResponse
+// GET request GetEmployeeByID
+func (h *Handlers) DeleteEmployeeByID(rw http.ResponseWriter, r *http.Request) {
 
-	var empDB *database.Employee
-	_ = json.NewDecoder(r.Body).Decode(&empDB)
+	id := getEmployeeID(r)
 
-	log := hclog.Default()
-	log.Info("Handler DeleteEmployeeByEmail : %#v\n", empDB)
+	h.log.Info("DeleteEmployeeByID", "id", id)
 
-	err := handlers.database.DeleteEmployeeByEmail(empDB)
+	_, err := h.database.GetEmployeeByID(id)
 
-	if err != nil {
-		respondJSON(rw, http.StatusBadRequest, map[string]string{"error": err.Error()})
+	switch err {
+	case nil:
+	case database.ErrEmployeeNotFound:
+		h.log.Error("Unable to find employee", "error", err)
+		h.respondJSON(rw, http.StatusNotFound, &ServerError{Error: err.Error()})
+		return
+	default:
+		h.log.Error("Error while find employee", "error", err)
+		h.respondJSON(rw, http.StatusInternalServerError, &ServerError{Error: err.Error()})
+		return
 	}
 
-	respondJSON(rw, http.StatusCreated, map[string]string{"success": "Employee deleted successfully"})
+	err = h.database.DeleteEmployeeByID(id)
+	if err != nil {
+		h.respondJSON(rw, http.StatusBadRequest, &ServerError{Error: err.Error()})
+		return
+	}
+
+	h.log.Info("DeleteEmployeeByID", "Deleted", id)
+
+	h.respondJSON(rw, http.StatusCreated, map[string]string{"success": "Employee deleted successfully"})
 }

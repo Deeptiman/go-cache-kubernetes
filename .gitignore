@@ -5,3 +5,4 @@ node.txt
 go.mod
 go.sum
 kompose
+go_fix.sh

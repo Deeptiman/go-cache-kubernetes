@@ -3,23 +3,28 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/hashicorp/go-hclog"
-
 	"github.com/go-cache/database"
 )
 
-func (handlers *Handlers) CreateEmployee(rw http.ResponseWriter, r *http.Request) {
+// swagger:route POST /employees create_employee
+// Request to create new employee
+//
+// responses:
+//	200: employeeResponse
+//  422: errorValidation
+//  501: errorResponse
+// POST request CreateEmployee
+func (h *Handlers) CreateEmployee(rw http.ResponseWriter, r *http.Request) {
 
-	empData := r.Context().Value(KeyEmp{}).(*database.Employee)
+	data := r.Context().Value(KeyEmp{}).(*database.Employee)
 
-	log := hclog.Default()
-	log.Info("Handler CreateEmployee : %#v\n", empData)
+	h.log.Info("Insert Employee", "Create", data)
 
-	err := handlers.database.CreateEmployee(empData)
-
+	err := h.database.CreateEmployee(data)
 	if err != nil {
-		respondJSON(rw, http.StatusBadRequest, map[string]string{"error_code": err.Error()})
+		h.respondJSON(rw, http.StatusBadRequest, &ServerError{Error: err.Error()})
+		return
 	}
 
-	respondJSON(rw, http.StatusCreated, map[string]string{"success": "Employee created successfully"})
+	h.respondJSON(rw, http.StatusCreated, map[string]string{"success": "Employee created successfully"})
 }

@@ -1,0 +1,211 @@
+basePath: /
+consumes:
+- application/json
+definitions:  
+  ServerError:
+    description: ServerError error message returned by a server
+    properties:
+      message:
+        description: message
+        type: string
+        x-go-name: Message
+    type: object
+    x-go-package: github.com/Deeptiman/go-cache/database
+  ValidationError:
+    description: ValidationError is a collection of validation error messages
+    properties:
+      messages:
+        description: messages
+        items:
+          type: string
+        type: array
+        x-go-name: Messages
+    type: object
+    x-go-package: github.com/Deeptiman/go-cache/database  
+  Employee:
+    description: Employee defines the structure for an API employee
+    properties:
+      id:
+        description: the id of an employee
+        format: int
+        minimum: 100
+        type: integer
+        x-go-name: ID
+      name:
+        description: the name of an employee
+        maxLength: 255
+        type: string
+        x-go-name: Name
+      email:
+        description: the email of an employee
+        pattern: 'abc@abc.abc'
+        maxLength: 255
+        type: string
+        x-go-name: Email
+      company:
+        description: the company name where the employee is working
+        maxLength: 255
+        type: string
+        x-go-name: Company      
+      occupation:
+        description: the occupation of an employee
+        maxLength: 255
+        type: string
+        x-go-name: Occupation
+      salary:
+        description: the salary of an employee
+        minimum: 9999
+        type: int
+        x-go-name: Salary
+    required:
+    - id    
+    - name
+    - email
+    - company
+    - occupation
+    - salary
+    type: object
+    x-go-package: github.com/Deeptiman/go-cache/database
+  Success:
+    description: Employee created successfully
+    properties:
+      message:
+        description: the employee created successfully
+        maxLength: 255
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/Deeptiman/go-cache/database
+info:
+  description: Documentation for Employee API
+  title: Employee API
+  version: 1.0.0
+paths:
+  /api:
+    get:
+      description: Return a list of employees from the database
+      operationId: get_all_employees      
+      responses:
+        "200":
+          $ref: '#/responses/employeesResponse'
+        "501":
+          $ref: '#/responses/errorResponse'
+      tags:
+      - employees      
+    post:
+      description: Create a new employee
+      operationId: create_employee
+      parameters:
+      - description: |-
+          Employee data structure to Update or Create.
+          Note: the id field is ignored by update and create operations
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/Employee'
+      responses:
+        "200":
+          $ref: '#/responses/successResponse'
+        "422":
+          $ref: '#/responses/errorValidation'
+        "501":
+          $ref: '#/responses/errorResponse'
+      tags:
+      - employees
+    put:
+      description: Update a employee details
+      operationId: update_employee
+      parameters:
+      - description: |-
+          Employee data structure to Update or Create.
+          Note: the id field is ignored by update and create operations
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/Employee'
+      responses:
+        "201":
+          $ref: '#/responses/noContentResponse'
+        "404":
+          $ref: '#/responses/errorResponse'
+        "422":
+          $ref: '#/responses/errorValidation'
+      tags:
+      - employees      
+  /employees/{id}:
+    delete:
+      description: Delete an employee details
+      operationId: delete_employee
+      parameters:
+      - description: The id of the employee for which the operation relates
+        format: int
+        in: path
+        name: id
+        required: true
+        type: integer
+        x-go-name: ID
+      responses:
+        "201":
+          $ref: '#/responses/noContentResponse'
+        "404":
+          $ref: '#/responses/errorResponse'
+        "501":
+          $ref: '#/responses/errorResponse'          
+      tags:
+      - employees
+    get:
+      description: Return a list of employees from the database
+      operationId: get_employee_by_email
+      parameters:
+      - description: Email id of the employee
+        in: query
+        name: Email
+        type: string      
+      responses:
+        "200":
+          $ref: '#/responses/employeeResponse'
+        "404":
+          $ref: '#/responses/errorResponse'
+      tags:
+      - employees
+  /kafka:
+    get:
+      description: Request to reload list of employees using a Kafka message broker
+      operationId: producer           
+      responses:
+        "200":
+          $ref: '#/responses/noContentResponse'
+      tags:
+      - employees
+produces:
+- application/json
+responses:
+  errorResponse:
+    description: Server error message returned as a string
+    schema:
+      $ref: '#/definitions/ServerError'
+  errorValidation:
+    description: Validation errors defined as an array of strings
+    schema:
+      $ref: '#/definitions/ValidationError'
+  noContentResponse:
+    description: No content is returned by this API endpoint
+  successResponse:
+    description: Success response defined as strings
+    schema:
+      $ref: '#/definitions/Success'
+  employeeResponse:
+    description: Data structure representing a single employee
+    schema:
+      $ref: '#/definitions/Employee'
+  employeesResponse:
+    description: A list of employees
+    schema:
+      items:
+        $ref: '#/definitions/Employee'
+      type: array
+schemes:
+- http
+swagger: "2.0"

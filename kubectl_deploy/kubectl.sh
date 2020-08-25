@@ -1,1 +1,1 @@
-kubectl create -f gocache-claim0-persistentvolumeclaim.yaml,gocache-deployment.yaml,gocache-service.yaml
+kubectl create -f gocache-claim1-persistentvolumeclaim.yaml,gocache-deployment.yaml,gocache-service.yaml

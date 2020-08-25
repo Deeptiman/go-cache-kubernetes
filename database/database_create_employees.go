@@ -2,25 +2,30 @@ package database
 
 import (
 	"context"
-	"fmt"
 )
 
 // CreateEmployee method
 func (e *EmployeeDB) CreateEmployee(employee *Employee) error {
 
-	empCollection, err := e.GetCollection()
+	collection, err := e.GetCollection()
 	if err != nil {
-		return fmt.Errorf("Unable to create collection - %s", err.Error())
+		e.log.Error("Unable to create collection", "error", err.Error())
+		return err
 	}
 
-	fmt.Println("Add Employee - ", employee)
+	//check wheather employee exists in the db
+	_, err = e.GetEmployeeByID(employee.ID)
 
-	insertResult, err := empCollection.InsertOne(context.TODO(), employee)
-	if err != nil {
-		return fmt.Errorf("Failed to create employee - %s", err.Error())
+	if err == ErrEmployeeNotFound {
+		insertResult, err := collection.InsertOne(context.TODO(), employee)
+		if err != nil {
+			e.log.Error("Failed to create employee", "error", err.Error())
+			return err
+		}
+		e.log.Info("Employee Created", "success", insertResult)
+	} else {
+		return EmployeeAlreadyExists
 	}
-
-	fmt.Println("Inserted a single document: ", insertResult)
 
 	return nil
 }
