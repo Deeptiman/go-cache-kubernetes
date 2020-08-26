@@ -420,5 +420,13 @@ The <b>go-swagger</b> toolkit is integrated for the REST APIs documentation. The
 <p><a href="https://github.com/go-swagger/go-swagger" target="_blank">https://github.com/go-swagger/go-swagger</a></p>
 <p><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/swagger.yaml" target="_blank">swagger.yaml</a></p>
 
+## More Info
+<ul>
+	<li> <a href="https://kubernetes.io/docs/setup/">Getting started Kubernetes</a> </li>
+	<li> <a href="https://kubernetes.io/docs/tutorials/hello-minikube/">Hello Minikube</a></li>
+	<li> <a href="https://docs.docker.com/get-started/">Docker Documentation</a></li>
+	<li> <a href="https://redocly.github.io/redoc/">Swagger ReDoc</a></li>
+</ul>
+
 <h2>License</h2>
 <p>This project is licensed under the <a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/LICENSE">MIT License</a></p>
