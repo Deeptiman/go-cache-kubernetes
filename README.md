@@ -4,20 +4,16 @@ The application is a Data Caching service designed and implemented using Microse
 
 ## Features
 
- - **MongoDB**
-	
-	The MongoDB Go driver is implemented to perform several database operations. The installation can be done using the go dependency module.
+ - **MongoDB**: The MongoDB Go driver is implemented to perform several database operations. The installation can be done using the go dependency module.
 			go get go.mongodb.org/mongo-driver/mongo
 link: https://github.com/mongodb/mongo-go-driver
 
- - **Redis Cache**
-	The **go-redis** library is implemented to integrate the Redis data caching in the application. So, the redis will cache the second GET request while reading the user details.
+ - **Redis Cache**: The **go-redis** library is implemented to integrate the Redis data caching in the application. So, the redis will cache the second GET request while reading the user details.
  
 		go get github.com/go-redis/redis/v8
 	link : https://github.com/go-redis/redis
 
- - **Kafka Message Broker**
-	The confluent-kafka-go is used as a Go client library for Kafka message broker. The library will provide **Producer** and **Consumer** architecture to stream messages to the user for a subscribed topic. So, there will be two REST APIs that the user can use for Producing the messages reading from MongoDB and Consuming or Reading messages from the message broker.
+ - **Kafka Message Broker**: The confluent-kafka-go is used as a Go client library for Kafka message broker. The library will provide **Producer** and **Consumer** architecture to stream messages to the user for a subscribed topic. So, there will be two REST APIs that the user can use for Producing the messages reading from MongoDB and Consuming or Reading messages from the message broker.
 
 		go get github.com/confluentinc/confluent-kafka-go/kafka
 	link: https://github.com/confluentinc/confluent-kafka-go
@@ -27,8 +23,7 @@ link: https://github.com/mongodb/mongo-go-driver
 ## Kubernetes tools
 Kubernetes provides several tools that can be useful to setup Kubernetes in the local environment.
 
- - **minikube**
-The tool will run a single-node Kubernetes cluster running inside a Virtual Machine. Virtualization has to be supported in the computer and Hypervisor needed to be enabled.
+ - **minikube**: The tool will run a single-node Kubernetes cluster running inside a Virtual Machine. Virtualization has to be supported in the computer and Hypervisor needed to be enabled.
 	    **Installation**
 	    The minikube installation follows with the Hypervisor installation and [Hyperkit](https://minikube.sigs.k8s.io/docs/drivers/hyperkit/) is the recommended virtualization toolkit.   
 
@@ -37,8 +32,7 @@ The tool will run a single-node Kubernetes cluster running inside a Virtual Mach
 **Quick check**
 				minikube start
 
- - **kubectl**
-The kubectl command-line tool will work to manage a Kubernetes cluster. The tool will be used to deploy, create, analyze, inspect pods that are running under a Kubernetes cluster.
+ - **kubectl**: The kubectl command-line tool will work to manage a Kubernetes cluster. The tool will be used to deploy, create, analyze, inspect pods that are running under a Kubernetes cluster.
 **Installation**
 curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
 
