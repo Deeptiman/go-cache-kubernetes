@@ -1,6 +1,6 @@
 # go-cache-kubernetes
 
-The application is a Data Caching service designed and implemented using Microservices architecture. The cloud deployment environments are used **Kubernetes**, **Docker**, and written in **Go** programming language. The application also uses a **MongoDB** as NoSQL database with **Redis** in-memory database for the caching services.
+The web application is a Data Caching service designed and implemented using Microservices architecture. The cloud deployment environments are used **Kubernetes**, **Docker**, and written in **Go** programming language. The application also uses a **MongoDB** as NoSQL database with **Redis** in-memory database for the caching services.
 
 ## Features
 
