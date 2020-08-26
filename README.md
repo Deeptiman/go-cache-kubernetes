@@ -222,7 +222,7 @@ So, now the MongoDB is complete setup with ReplicaSet and with an Administrator 
 
 <h3>Deploy Redis in Kubernetes</h3>
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
-<br>
+<br><br>
 	<p><b>Connection URI</b></p>
 	<table class="table table-striped table-bordered">
 	<tbody>
@@ -372,7 +372,7 @@ There will be deployment and service similar to the other Pods running in the cl
 	$ cd kafka/
 	$~/kafka/ bin/zookeeper-server-start.sh config/zookeeper.properties	
 
-   <h4>2. Kafka server<h4>
+   <h4>2. Kafka server</h4>
 		 
 	$ cd kafka/
 	$~/kafka/ bin/kafka-server-start.sh config/server.properties
@@ -395,3 +395,6 @@ The kubectl is a very handy tool while troubleshooting application into the Kube
 The go-swagger toolkit is being integrated for the REST APIs documentation. The API doc can be accessible via http://localhost:5000/docs
 
 https://github.com/go-swagger/go-swagger
+
+
+
