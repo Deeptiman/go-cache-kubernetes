@@ -366,16 +366,15 @@ There will be deployment and service similar to the other Pods running in the cl
 		
 
 <h3>Start Zookeeper/Kafka server</h3>
-<br>
    <h4>1. zookeeper server</h4>
 		  
-		  $ cd kafka/
-		  $~/kafka/ bin/zookeeper-server-start.sh config/zookeeper.properties	
+	$ cd kafka/
+	$~/kafka/ bin/zookeeper-server-start.sh config/zookeeper.properties	
 
    <h4>2. Kafka server<h4>
 		 
-		  $ cd kafka/
-		  $~/kafka/ bin/kafka-server-start.sh config/server.properties
+	$ cd kafka/
+	$~/kafka/ bin/kafka-server-start.sh config/server.properties
 				
 
 ## Troubleshoot with kubectl
@@ -384,13 +383,9 @@ The kubectl is a very handy tool while troubleshooting application into the Kube
 
 **Few useful commands**
 <ol>
-	//List all pods
 	<li> kubectl get pods </li>
-	//Inspect a pod
 	<li> kubectl describe pods <pod-name>  </li>
-	//Check the logs for a pod
 	<li> kubectl logs <pod-name>  </li>
-	//Get inside into the pod shell
 	<li> kubectl exec -ti <pod-name> --bash </li>
 </ol>
 
