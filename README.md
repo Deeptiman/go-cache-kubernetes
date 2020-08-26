@@ -79,9 +79,9 @@ To begin the deployment process start the minikube
  1. Go Web App
 This will load the web app Docker image in the cluster.	
 
-<b>Name: go-cache-poc</b>
-<b>Kind: Deployment</b>
-<b>YAML: go-cache-poc-app.yaml</b>
+<p><b>Name<b/>: go-cache-poc</p>
+<p><b>Kind</b>: Deployment</p>
+<p><b>YAML</b>: go-cache-poc-app.yaml</p>
 
 **Command to deploy**
 
@@ -97,9 +97,9 @@ Three pods are running under this deployment.
 
  - Go Web App Service
  This service will create an external endpoint using a LoadBalancer.
- **Name**: go-cache-poc-service
- **Kind**: Service
- **YAML**: go-cache-poc-svc.yaml
+ <p><b>Name</b>: go-cache-poc-service</p>
+ <p><b>Kind</b>: Service</p>
+ <p><b>YAML</b>: go-cache-poc-svc.yaml</p>
  
 **Command to deploy**
 
@@ -115,9 +115,9 @@ Kubernetes provides a feature that will allow us to create a stateful applicatio
 
  - **MongoDB StorageClass**
  This will create the StorageClass that will be used for the storage
- **Name**: mongodb-storage
- **Kind**: StorageClass
-**YAML**: mongodb-storage.yaml
+<p><b>Name</b>: mongodb-storage</p>
+<p><b>Kind</b>: StorageClass</p>
+<p><b>YAML</b>: mongodb-storage.yaml</p>
 
 Command to deploy
 
@@ -125,9 +125,9 @@ Command to deploy
 
  - **MongoDB service**
 This will create the StatefulSet app and the Mongo services in the cluster.
-**Name**: mongodb-svc
-**Kind**: StatefulSet, Service	
-**YAML**: mongodb-app-svc.yaml
+<p><b>Name**: mongodb-svc</p>
+<p><b>Kind**: StatefulSet, Service</p>	
+<p><b>YAML**: mongodb-app-svc.yaml</p>
 Command to deploy
 
 	   $ kubectl apply -f mongodb-app-svc.yaml
@@ -170,20 +170,21 @@ So, now the MongoDB is complete setup with ReplicaSet and with an Administrator 
  - Deploy Redis in Kubernetes
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
 	 - **Connection URI**
-		 Local:  localhost:6379
-		Server: redis.default.svc.cluster.local:6379
+		<p>Local:  localhost:6379</p>
+		<p>Server: redis.default.svc.cluster.local:6379</p>
 	 - **Redis Deployment**
-		 Name: redis-app
-	     Kind: Deployment
-	     YAML: redis-deployment.yaml
+		 <p><b>Name</b>: redis-app</p>
+	     	 <p><b>Kind</b>: Deployment</p>
+		 <p><b>YAML</b>: redis-deployment.yaml</p>
 
 	Command to deploy
 	 	
-		$ kubectl apply -f redis-deployment.yaml
-	 - **Redis Service**
-		 Name: redis-service
-	     Kind: Service
-	     YAML: redis-service.yaml
+	$ kubectl apply -f redis-deployment.yaml
+		
+   - **Redis Service**
+	     <p><b>Name</b>: redis-service</p>
+	     <p><b>Kind</b>: Service</p>
+	     <p><b>YAML</b>: redis-service.yaml</p>
 	     
 Command to deploy
 	 	
