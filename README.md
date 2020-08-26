@@ -63,7 +63,7 @@ The application uses Docker for container-based development. The docker image ge
 
 		$ docker login
 
-	Type Username and Password to complete the authentication
+		Type Username and Password to complete the authentication
 
  - **Push the image to docker hub**
 
@@ -76,12 +76,10 @@ There will be several deployments, services that need to be running in the clust
 	
 	$ minikube start
 
-<h2> Deployment Steps <h2>
-
 <h3>Deploy Go Web App</h3> 
 
-<br> This will load the web app Docker image in the cluster.	
-
+This will load the web app Docker image in the cluster.	
+<br>
 <table class="table table-striped table-bordered">
 <tbody>
 <tr>
@@ -107,12 +105,12 @@ There will be several deployments, services that need to be running in the clust
 	NAME           READY   UP-TO-DATE   AVAILABLE   AGE
 	go-cache-poc   3/3     3            3           14s	
 	  
-Three pods are running under this deployment.
+	Three pods are running under this deployment.
 
 <h3>Deploy Go Web App Service</h3>
 
-<br>This service will create an external endpoint using a LoadBalancer.
-
+This service will create an external endpoint using a LoadBalancer.
+<br>
 <table class="table table-striped table-bordered">
 <tbody>
 <tr>
@@ -139,6 +137,7 @@ Three pods are running under this deployment.
 	// Need to write
 
  <h3>Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet<h3>
+	
 Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.
 
  - **MongoDB StorageClass** will create the StorageClass that will be used for the storage
