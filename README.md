@@ -76,6 +76,29 @@ There will be several deployments, services that need to be running in the clust
 	
 	$ minikube start
 
+<h3>Deploy PersistentVolumeClaim</h3> 
+
+This will allocate a volume of 1GB storage in the cluster
+<br>
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Name</b></td>
+		<td>go-cache-poc-pvc</td>
+	</tr>
+	<tr>
+		<td><b>Kind</b></td>
+		<td>PersistentVolumeClaim</td>
+	</tr>
+	<tr>
+		<td><b>YAML</b></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go-cache-poc/go-cache-poc-pvc.yaml" target="_blank">go-cache-poc-pvc.yaml</a></td>
+	</tr>
+	</tbody>
+	</table>
+
+    $ kubectl apply -f go-cache-poc-pvc.yaml
+
 <h3>Deploy Go Web App</h3> 
 
 This will load the web app Docker image in the cluster.	
