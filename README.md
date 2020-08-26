@@ -159,7 +159,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tbody>
 	</table>
 
-	$ kubectl apply -f mongodb-app-svc.yaml
+		$ kubectl apply -f mongodb-app-svc.yaml
 
  - **MongoDB service** will create the StatefulSet app and the Mongo services in the cluster.
 	<table class="table table-striped table-bordered">
