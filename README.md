@@ -4,17 +4,17 @@ The web application is a Data Caching service designed and implemented using Mic
 
 ## Features
 
- - **MongoDB**: The MongoDB Go driver is implemented to perform several database operations. The installation can be done using the go dependency module.
+ - **MongoDB** is implemented to perform several database operations. The installation can be done using the go dependency module.
 		
 		go get go.mongodb.org/mongo-driver/mongo
 	  https://github.com/mongodb/mongo-go-driver
 
- - **Redis Cache**: The **go-redis** library is implemented to integrate the Redis data caching in the application. So, the redis will cache the second GET request while reading the user details.
+ - **Redis Cache** is implemented to integrate the data caching in the application. So, the <b>go-redis</b> will cache the second GET request while reading the user details.
  
 		go get github.com/go-redis/redis/v8
 	  https://github.com/go-redis/redis
 
- - **Kafka Message Broker**: The confluent-kafka-go is used as a Go client library for Kafka message broker. The library will provide **Producer** and **Consumer** architecture to stream messages to the user for a subscribed topic. So, there will be two REST APIs that the user can use for Producing the messages reading from MongoDB and Consuming or Reading messages from the message broker.
+ - **Kafka Message Broker**: The <b>confluent-kafka-go</b> is used as a Go client library for Kafka message broker. The library will provide **Producer** and **Consumer** architecture to stream messages to the user for a subscribed topic. So, there will be two REST APIs that the user can use for Producing the messages reading from MongoDB and Consuming or Reading messages from the message broker.
 
 		go get github.com/confluentinc/confluent-kafka-go/kafka
 	https://github.com/confluentinc/confluent-kafka-go
