@@ -92,7 +92,7 @@ This will load the web app Docker image in the cluster.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="go-cache-poc-app.yaml">go-cache-poc-app.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go-cache-poc/go-cache-poc-app.yaml" target="_none">go-cache-poc-app.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -123,7 +123,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td>go-cache-poc-svc.yaml</td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go-cache-poc/go-cache-poc-svc.yaml" target="_none">go-cache-poc-svc.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -154,7 +154,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td>mongodb-storage.yaml</td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-storage.yaml" target="_none">mongodb-storage.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -174,7 +174,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td>mongodb-app-svc.yaml</td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-app-svc.yaml" target="_none">mongodb-app-svc.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -249,7 +249,7 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 			<tr>
 				<td><b>YAML</b></td>
-				<td>redis-deployment.yaml</td>
+				<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/redis/redis-deployment.yaml" target="_none">redis-deployment.yaml</a></td>
 			</tr>
 		  </tbody>
 		</table>
@@ -269,7 +269,7 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 			<tr>
 				<td><b>YAML</b></td>
-				<td>redis-service.yaml</td>
+				<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/redis/redis-service.yaml" target="_none">redis-service.yaml</a></td>
 			</tr>
 		  </tbody>
 		</table>
@@ -294,7 +294,7 @@ There will be deployment and service similar to the other Pods running in the cl
 			</tr>
 			<tr>
 				<td><b>YAML</b></td>
-				<td>zookeeper-deployment.yaml</td>
+				<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/kafka/zookeeper-deployment.yaml" target="_none">zookeeper-deployment.yaml</a></td>
 			</tr>
 		  </tbody>
 		</table>
@@ -314,7 +314,7 @@ There will be deployment and service similar to the other Pods running in the cl
 			</tr>
 			<tr>
 				<td><b>YAML</b></td>
-				<td>zookeeper-service.yaml</td>
+				<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/kafka/zookeeper-service.yaml" target="_none">zookeeper-service.yaml</a></td>
 			</tr>
 		  </tbody>
 		</table>
@@ -335,7 +335,7 @@ There will be deployment and service similar to the other Pods running in the cl
 			</tr>
 			<tr>
 				<td><b>YAML</b></td>
-				<td>kafka-service.yaml</td>
+				<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/kafka/kafka-service.yaml" target="_none">kafka-service.yaml</a></td>
 			</tr>
 		  </tbody>
 		</table>
@@ -357,7 +357,7 @@ There will be deployment and service similar to the other Pods running in the cl
 			</tr>
 			<tr>
 				<td><b>YAML</b></td>
-				<td>kafka-repcon.yaml</td>
+				<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/kafka/kafka-repcon.yaml" target="_none">kafka-repcon.yaml</a></td>
 			</tr>
 		  </tbody>
 		</table>
@@ -395,7 +395,7 @@ The kubectl is a very handy tool while troubleshooting application into the Kube
 The go-swagger toolkit is integrated for the REST APIs documentation. The API doc can be accessible via http://localhost:5000/docs
 
 https://github.com/go-swagger/go-swagger
-
+<a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/swagger.yaml" target="_none">swagger.yaml</a>
 
 <h2>License</h2>
 <p>This project is licensed under the <a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/LICENSE">MIT License</a></p>
