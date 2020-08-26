@@ -215,7 +215,7 @@ Bash
 
   	$ hostname -f
 	     
-	 mongod-app-0.mongodb-svc.default.svc.cluster.local
+	 mongod-app-0.mongodb-service.default.svc.cluster.local
 
 Mongo Shell
 
