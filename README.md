@@ -137,8 +137,9 @@ This service will create an external endpoint using a LoadBalancer.
 	// Need to write
 
  <h3>Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet<h3>
-	
-Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.
+
+
+<p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
 
  - **MongoDB StorageClass** will create the StorageClass that will be used for the storage
 <table class="table table-striped table-bordered">
@@ -277,10 +278,10 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 <h3>Deploy Kafka in Kubernetes</h3>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
 <br>
-<h4><b>Deploy Zookeeper</b></h4>
+<h4>Zookeeper</h4>
 There will be deployment and service similar to the other Pods running in the cluster.
 <br><br>
-	 <h3><b>zookeeper-deployment</b></h3>
+	 <h5>zookeeper-deployment</h5>
 	 <table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -300,7 +301,7 @@ There will be deployment and service similar to the other Pods running in the cl
 	 	
 		    $ kubectl apply -f zookeeper-deployment.yaml
 		    
- <h4>zookeeper-service</h4>
+ <h5>zookeeper-service</h5>
  <table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -320,10 +321,10 @@ There will be deployment and service similar to the other Pods running in the cl
 	 	
 		    $ kubectl apply -f zookeeper-service.yaml
 		    
-<h4>Deploy Kafka</h4>
+<h4>Kafka</h4>
 	 
 <br>
-<p><b>kafka-service</b></p>
+<h5>kafka-service</h5>
 	<table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -345,7 +346,7 @@ There will be deployment and service similar to the other Pods running in the cl
 	 	
 				$ kubectl apply -f kafka-service.yaml
 <br>
-<p><b>kafka-replication-controller</b></p>
+<h5>kafka-replication-controller</h5>
 	<table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -368,14 +369,14 @@ There will be deployment and service similar to the other Pods running in the cl
 			    $ kubectl apply -f kafka-repcon.yaml
 		
 
-<h2>Start Zookeeper/Kafka server</h2>
+<h3>Start Zookeeper/Kafka server</h3>
 <br>
-   <p><b>1. zookeeper server</b></p>
+   <h4>1. zookeeper server</h4>
 		  
 		  $ cd kafka/
 		  $~/kafka/ bin/zookeeper-server-start.sh config/zookeeper.properties	
 
-   <p><b>2. Kafka server</b></p>
+   <h4>2. Kafka server<h4>
 		 
 		  $ cd kafka/
 		  $~/kafka/ bin/kafka-server-start.sh config/server.properties
