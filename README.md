@@ -273,14 +273,13 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 		  </tbody>
 		</table>
 	 	
-	 $ kubectl apply -f redis-service.yaml
+	$ kubectl apply -f redis-service.yaml
 
 <h3>Deploy Kafka in Kubernetes</h3>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
 <br>
 <h4>Zookeeper</h4>
 There will be deployment and service similar to the other Pods running in the cluster.
-<br><br>
 	 <h5>zookeeper-deployment</h5>
 	 <table class="table table-striped table-bordered">
 		  <tbody>
@@ -299,7 +298,7 @@ There will be deployment and service similar to the other Pods running in the cl
 		  </tbody>
 		</table>
 	 	
-		    $ kubectl apply -f zookeeper-deployment.yaml
+	$ kubectl apply -f zookeeper-deployment.yaml
 		    
  <h5>zookeeper-service</h5>
  <table class="table table-striped table-bordered">
@@ -319,11 +318,9 @@ There will be deployment and service similar to the other Pods running in the cl
 		  </tbody>
 		</table>
 	 	
-		    $ kubectl apply -f zookeeper-service.yaml
+    $ kubectl apply -f zookeeper-service.yaml
 		    
 <h4>Kafka</h4>
-	 
-<br>
 <h5>kafka-service</h5>
 	<table class="table table-striped table-bordered">
 		  <tbody>
@@ -344,8 +341,8 @@ There will be deployment and service similar to the other Pods running in the cl
 		   
 	         
 	 	
-				$ kubectl apply -f kafka-service.yaml
-<br>
+ 	$ kubectl apply -f kafka-service.yaml
+
 <h5>kafka-replication-controller</h5>
 	<table class="table table-striped table-bordered">
 		  <tbody>
@@ -363,10 +360,9 @@ There will be deployment and service similar to the other Pods running in the cl
 			</tr>
 		  </tbody>
 		</table>
-			  
-	Command to deploy
+
 	 	
-			    $ kubectl apply -f kafka-repcon.yaml
+	$ kubectl apply -f kafka-repcon.yaml
 		
 
 <h3>Start Zookeeper/Kafka server</h3>
