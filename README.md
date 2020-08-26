@@ -367,12 +367,12 @@ There will be deployment and service similar to the other Pods running in the cl
 		
 
 <h3>Start Zookeeper/Kafka server</h3>
-   <h4>1. zookeeper server</h4>
+   <h4>zookeeper server</h4>
 		  
 	$ cd kafka/
 	$~/kafka/ bin/zookeeper-server-start.sh config/zookeeper.properties	
 
-   <h4>2. Kafka server</h4>
+   <h4>kafka server</h4>
 		 
 	$ cd kafka/
 	$~/kafka/ bin/kafka-server-start.sh config/server.properties
