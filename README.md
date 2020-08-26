@@ -1,4 +1,4 @@
-# go-cache-kubernete
+# go-cache-kubernetes
 
 The application is a Data Caching service designed and implemented using Microservices architecture. The cloud deployment environments are used **Kubernetes**, **Docker**, and written in **Go** programming language. The application also uses a **MongoDB** as NoSQL database with **Redis** in-memory database for the caching services.
 
@@ -366,7 +366,7 @@ There will be deployment and service similar to the other Pods running in the cl
 	$ kubectl apply -f kafka-repcon.yaml
 		
 
-<h3>Start Zookeeper/Kafka server</h3>
+<h3>Start zookeeper/kafka server</h3>
    <h4>zookeeper server</h4>
 		  
 	$ cd kafka/
