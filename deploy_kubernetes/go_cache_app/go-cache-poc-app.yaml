@@ -28,17 +28,17 @@ spec:
         - name: GET_HOST_FROM
           value: dns
         image: deeptiman1991/go-cache-poc:1.0.0
-        name: gocachekube
+        name: go-cache-poc-container
         ports:
         - containerPort: 5000
         resources: {}
         volumeMounts:
-        - mountPath: /go/src/go-cache
-          name: go-cache-poc-claim0
-      hostname: go-cache-poc
+        - mountPath: /go/src/go-cache-kubernetes
+          name: go-cache-poc-pvc
+      hostname: go-cache-poc-container
       restartPolicy: Always
       volumes:
-      - name: go-cache-poc-claim0
+      - name: go-cache-poc-pvc
         persistentVolumeClaim:
-          claimName: go-cache-poc-claim0
+          claimName: go-cache-poc-pvc
 status: {}
