@@ -7,15 +7,15 @@ metadata:
     kompose.version: 1.19.0 (f63a961c)
   creationTimestamp: null
   labels:
-    io.kompose.service: gocache
-  name: gocache
+    io.kompose.service: go-cache-poc-service
+  name: go-cache-poc-service
 spec:
   ports:
   - name: "5000"
     port: 5000
     targetPort: 5000
   selector:
-    io.kompose.service: gocache
+    io.kompose.service: go-cache-poc-service
   type: LoadBalancer
 status:
   loadBalancer: {}

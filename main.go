@@ -5,9 +5,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-cache/database"
-	"github.com/go-cache/handlers"
-	"github.com/go-cache/kafka"
+	"github.com/go-cache-kubernetes/database"
+	"github.com/go-cache-kubernetes/handlers"
+	"github.com/go-cache-kubernetes/kafka"
 	"github.com/go-openapi/runtime/middleware"
 	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"

@@ -7,14 +7,14 @@ metadata:
 spec:  
   replicas: 1
   selector:  
-    app: kafka 
+    app: kafka-repcon 
   template:  
     metadata:  
       labels:  
-        app: kafka 
+        app: kafka-repcon 
     spec:  
       containers:
-        - name: zookeeper-container-app
+        - name: zookeeper-app-container
           image: wurstmeister/kafka 
           command:  
             - /bin/zookeeper-server-start.sh 

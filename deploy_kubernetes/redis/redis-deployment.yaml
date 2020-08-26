@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: redis
+  name: redis-app
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: redis
+        app: redis-app
         role: master
         tier: backend
     spec:
       containers:
-      - name: redis
+      - name: redis-app
         image: redis
         resources:
           requests:

@@ -24,7 +24,7 @@ var ctx = context.Background()
 func InitializeCacheClient() (*RedisCache, error) {
 
 	rdsClient := redis.NewClient(&redis.Options{
-		Addr:     SERVER_ADDR,
+		Addr:     LOCAL_ADDR,
 		Password: "",
 		DB:       0,
 	})

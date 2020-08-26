@@ -7,10 +7,10 @@ metadata:
     kompose.version: 1.19.0 (f63a961c)
   creationTimestamp: null
   labels:
-    io.kompose.service: gocache
-  name: gocache
+    io.kompose.service: go-cache-poc
+  name: go-cache-poc
 spec:
-  replicas: 1
+  replicas: 3
   strategy:
     type: Recreate
   template:
@@ -21,24 +21,24 @@ spec:
         kompose.version: 1.19.0 (f63a961c)
       creationTimestamp: null
       labels:
-        io.kompose.service: gocache
+        io.kompose.service: go-cache-poc
     spec:
       containers:
       - env:
         - name: GET_HOST_FROM
           value: dns
-        image: deeptiman1991/go-cache
-        name: gocache
+        image: deeptiman1991/go-cache-poc:1.0.0
+        name: gocachekube
         ports:
         - containerPort: 5000
         resources: {}
         volumeMounts:
         - mountPath: /go/src/go-cache
-          name: gocache-claim0
-      hostname: gocache
+          name: go-cache-poc-claim0
+      hostname: go-cache-poc
       restartPolicy: Always
       volumes:
-      - name: gocache-claim0
+      - name: go-cache-poc-claim0
         persistentVolumeClaim:
-          claimName: gocache-claim0
+          claimName: go-cache-poc-claim0
 status: {}

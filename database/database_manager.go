@@ -93,9 +93,9 @@ func (e *EmployeeDB) ConnectDB() (*mongo.Client, error) {
 
 	e.log.Info("Connect to MongoDB")
 
-	client, err := e.mongoServerClient()
+	//client, err := e.mongoServerClient()
 
-	//client, err := e.monogoLocalClient()
+	client, err := e.monogoLocalClient()
 	if err != nil {
 		e.log.Error("Unable to create mongo client", "error", err.Error())
 		return nil, err

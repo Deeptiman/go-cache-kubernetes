@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/go-cache/database"
+	"github.com/go-cache-kubernetes/database"
 	"github.com/gorilla/mux"
 )
 

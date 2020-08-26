@@ -4,6 +4,8 @@ FROM golang:1.12 as builder
 ENV HOME /app
 ENV GOOS linux
 
+LABEL maintainer="Deeptiman Pattnaik <pattnaikdeeptiman@gmail.com>"
+
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
@@ -22,6 +24,6 @@ WORKDIR /root/
 # Copy the pre-built binary file from the previous stage
 COPY --from=builder /app/main .
 
-EXPOSE 8080
+EXPOSE 5000
 
 CMD [ "./main" ]

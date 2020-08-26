@@ -1,0 +1,170 @@
+[
+    {
+        "id": 100,
+        "name": "Employee1",
+        "email": "employee1@gmail.com",
+        "company": "company1",
+        "occupation": "engineer1",
+        "salary": "$10,000"
+    },
+    {
+        "id": 101,
+        "name": "Employee2",
+        "email": "employee2@gmail.com",
+        "company": "company2",
+        "occupation": "engineer2",
+        "salary": "$20,000"
+    },
+    {
+        "id": 102,
+        "name": "Employee2",
+        "email": "employee2@gmail.com",
+        "company": "company2",
+        "occupation": "engineer2",
+        "salary": "$30,000"
+    },
+    {
+        "id": 103,
+        "name": "Employee3",
+        "email": "employee3@gmail.com",
+        "company": "company3",
+        "occupation": "engineer3",
+        "salary": "$40,000"
+    },
+    {
+        "id": 104,
+        "name": "Employee4",
+        "email": "employee4@gmail.com",
+        "company": "company4",
+        "occupation": "engineer4",
+        "salary": "$40,000"
+    },
+    {
+        "id": 105,
+        "name": "Employee5",
+        "email": "employee5@gmail.com",
+        "company": "company5",
+        "occupation": "engineer5",
+        "salary": "$50,000"
+    },
+    {
+        "id": 106,
+        "name": "Employee6",
+        "email": "employee6@gmail.com",
+        "company": "company6",
+        "occupation": "engineer6",
+        "salary": "$60,000"
+    },
+    {
+        "id": 107,
+        "name": "Employee7",
+        "email": "employee7@gmail.com",
+        "company": "company7",
+        "occupation": "engineer7",
+        "salary": "$70,000"
+    },
+    {
+        "id": 108,
+        "name": "Employee8",
+        "email": "employee8@gmail.com",
+        "company": "company8",
+        "occupation": "engineer8",
+        "salary": "$80,000"
+    },
+    {
+        "id": 109,
+        "name": "Employee9",
+        "email": "employee9@gmail.com",
+        "company": "company9",
+        "occupation": "engineer9",
+        "salary": "$90,000"
+    },
+    {
+        "id": 110,
+        "name": "Employee10",
+        "email": "employee10@gmail.com",
+        "company": "company10",
+        "occupation": "engineer10",
+        "salary": "$100,000"
+    },
+    {
+        "id": 111,
+        "name": "Employee11",
+        "email": "employee11@gmail.com",
+        "company": "company11",
+        "occupation": "engineer11",
+        "salary": "$110,000"
+    },
+    {
+        "id": 112,
+        "name": "Employee12",
+        "email": "employee12@gmail.com",
+        "company": "company12",
+        "occupation": "engineer12",
+        "salary": "$120,000"
+    },
+    {
+        "id": 113,
+        "name": "Employee13",
+        "email": "employee13@gmail.com",
+        "company": "company13",
+        "occupation": "engineer13",
+        "salary": "$130,000"
+    },
+    {
+        "id": 114,
+        "name": "Employee14",
+        "email": "employee14@gmail.com",
+        "company": "company14",
+        "occupation": "engineer14",
+        "salary": "$140,000"
+    },
+    {
+        "id": 115,
+        "name": "Employee15",
+        "email": "employee15@gmail.com",
+        "company": "company15",
+        "occupation": "engineer15",
+        "salary": "$150,000"
+    },
+    {
+        "id": 116,
+        "name": "Employee16",
+        "email": "employee16@gmail.com",
+        "company": "company16",
+        "occupation": "engineer16",
+        "salary": "$160,000"
+    },
+    {
+        "id": 117,
+        "name": "Employee17",
+        "email": "employee17@gmail.com",
+        "company": "company17",
+        "occupation": "engineer17",
+        "salary": "$170,000"
+    },
+    {
+        "id": 118,
+        "name": "Employee18",
+        "email": "employee18@gmail.com",
+        "company": "company18",
+        "occupation": "engineer18",
+        "salary": "$180,000"
+    },
+    {
+        "id": 119,
+        "name": "Employee19",
+        "email": "employee19@gmail.com",
+        "company": "company19",
+        "occupation": "engineer19",
+        "salary": "$190,000"
+    },
+    {
+        "id": 120,
+        "name": "Employee20",
+        "email": "employee20@gmail.com",
+        "company": "company20",
+        "occupation": "engineer20",
+        "salary": "$200,000"
+    }
+]

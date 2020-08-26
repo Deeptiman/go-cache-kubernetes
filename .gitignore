@@ -2,7 +2,6 @@ vendor
 vendor.orig
 go-cache
 node.txt
-go.mod
-go.sum
 kompose
 go_fix.sh
+docker_script.sh

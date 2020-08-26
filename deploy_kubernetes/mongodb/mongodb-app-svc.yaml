@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb-svc
+  name: mongodb-service
   labels:
-    name: mongo-app
+    name: mongodb-service
 spec:
   ports:
   - port: 27017
@@ -17,7 +17,7 @@ kind: StatefulSet
 metadata:
   name: mongod-app
 spec:
-  serviceName: mongodb-svc
+  serviceName: mongodb-service
   replicas: 3
   template:
     metadata:
@@ -60,7 +60,7 @@ spec:
   - metadata:
       name: mongodb-persistent-storage-claim-app
       annotations:
-        volume.beta.kubernetes.io/storage-class: "mongo-storage"
+        volume.beta.kubernetes.io/storage-class: "mongodb-storage"
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:

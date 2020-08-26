@@ -2,17 +2,17 @@ version: '3'
 
 services:
 
-  gocache:
-    container_name: gocache
-    image: deeptiman1991/go-cache
-    hostname: gocache
+  go-cache-poc:
+    container_name: go-cache-poc
+    image: deeptiman1991/go-cache-poc-app:1.0.0
+    hostname: kube-go-cache
     build:
         context: .
         dockerfile: Dockerfile    
     environment: 
         GET_HOST_FROM: dns
     networks:
-        - gocachenet
+        - go-cache-poc
     volumes: 
         - .:/go/src/go-cache
     ports:
@@ -21,7 +21,7 @@ services:
       kompose.service.type: LoadBalancer
 
 networks: 
-    gocachenet:
+    kube-go-cache:
         driver: bridge
 
 

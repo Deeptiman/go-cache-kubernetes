@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: zookeeper
+  name: zookeeper-app
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: zookeeper
+        app: zookeeper-app
         role: master
         tier: backend
     spec:
       containers:
-      - name: zookeeper
+      - name: zookeeper-app-container
         image: bitnami/zookeeper
         ports:
         - containerPort: 2181
@@ -20,4 +20,4 @@ spec:
         - name: ZOOKEEPER_ID
           value: "1"
         - name: ZOOKEEPER_SERVER_1
-          value: zookeeper
+          value: zookeeper-app
