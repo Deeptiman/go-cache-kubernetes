@@ -80,22 +80,22 @@ There will be several deployments, services that need to be running in the clust
 
 This will load the web app Docker image in the cluster.	
 <br>
-<table class="table table-striped table-bordered">
-<tbody>
-<tr>
-	<td><b>Name</b></td>
-	<td>go-cache-poc</td>
-</tr>
-<tr>
-	<td><b>Kind</b></td>
-	<td>Deployment</td>
-</tr>
-<tr>
-	<td><b>YAML</b></td>
-	<td>go-cache-poc-app.yaml</td>
-</tr>
-</tbody>
-</table>
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Name</b></td>
+		<td>go-cache-poc</td>
+	</tr>
+	<tr>
+		<td><b>Kind</b></td>
+		<td>Deployment</td>
+	</tr>
+	<tr>
+		<td><b>YAML</b></td>
+		<td>go-cache-poc-app.yaml</td>
+	</tr>
+	</tbody>
+	</table>
 
     $ kubectl apply -f go-cache-poc-app.yaml	
 
@@ -111,22 +111,22 @@ This will load the web app Docker image in the cluster.
 
 This service will create an external endpoint using a LoadBalancer.
 <br>
-<table class="table table-striped table-bordered">
-<tbody>
-<tr>
-	<td><b>Name</b></td>
-	<td>go-cache-poc-service</td>
-</tr>
-<tr>
-	<td><b>Kind</b></td>
-	<td>Service</td>
-</tr>
-<tr>
-	<td><b>YAML</b></td>
-	<td>go-cache-poc-svc.yaml</td>
-</tr>
-</tbody>
-</table>
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Name</b></td>
+		<td>go-cache-poc-service</td>
+	</tr>
+	<tr>
+		<td><b>Kind</b></td>
+		<td>Service</td>
+	</tr>
+	<tr>
+		<td><b>YAML</b></td>
+		<td>go-cache-poc-svc.yaml</td>
+	</tr>
+	</tbody>
+	</table>
 
 
 	$ kubectl apply -f go-cache-poc-svc.yaml
@@ -142,42 +142,42 @@ This service will create an external endpoint using a LoadBalancer.
 <p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
 
  - **MongoDB StorageClass** will create the StorageClass that will be used for the storage
-<table class="table table-striped table-bordered">
-<tbody>
-<tr>
-	<td><b>Name</b></td>
-	<td>mongodb-storage</td>
-</tr>
-<tr>
-	<td><b>Kind</b></td>
-	<td>StorageClass</td>
-</tr>
-<tr>
-	<td><b>YAML</b></td>
-	<td>mongodb-storage.yaml</td>
-</tr>
-</tbody>
-</table>
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Name</b></td>
+		<td>mongodb-storage</td>
+	</tr>
+	<tr>
+		<td><b>Kind</b></td>
+		<td>StorageClass</td>
+	</tr>
+	<tr>
+		<td><b>YAML</b></td>
+		<td>mongodb-storage.yaml</td>
+	</tr>
+	</tbody>
+	</table>
 
 	$ kubectl apply -f mongodb-app-svc.yaml
 
  - **MongoDB service** will create the StatefulSet app and the Mongo services in the cluster.
-<table class="table table-striped table-bordered">
-<tbody>
-<tr>
-	<td><b>Name</b></td>
-	<td>mongodb-svc</td>
-</tr>
-<tr>
-	<td><b>Kind</b></td>
-	<td>StatefulSet, Service</td>
-</tr>
-<tr>
-	<td><b>YAML</b></td>
-	<td>mongodb-app-svc.yaml</td>
-</tr>
-</tbody>
-</table>
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Name</b></td>
+		<td>mongodb-svc</td>
+	</tr>
+	<tr>
+		<td><b>Kind</b></td>
+		<td>StatefulSet, Service</td>
+	</tr>
+	<tr>
+		<td><b>YAML</b></td>
+		<td>mongodb-app-svc.yaml</td>
+	</tr>
+	</tbody>
+	</table>
 
 	   $ kubectl apply -f mongodb-app-svc.yaml
 
@@ -222,6 +222,7 @@ So, now the MongoDB is complete setup with ReplicaSet and with an Administrator 
 
 <h3>Deploy Redis in Kubernetes</h3>
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
+<br>
 	<p><b>Connection URI</b></p>
 	<table class="table table-striped table-bordered">
 	<tbody>
