@@ -300,9 +300,8 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 	$ kubectl apply -f redis-service.yaml
 
 <h3>Deploy Kafka in Kubernetes</h3>
-There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
-<br>
-<p> Please install <a href="https://kafka.apache.org/downloads">Apache Kafka</a> in your local machine and gcloud </p>
+There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script. 
+ ` Please install <a href="https://kafka.apache.org/downloads">Apache Kafka</a> in your local machine and gcloud `
 <br>
 <h4>Zookeeper</h4>
 There will be deployment and service similar to the other Pods running in the cluster.
