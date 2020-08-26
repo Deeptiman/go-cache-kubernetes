@@ -10,7 +10,7 @@ definitions:
         type: string
         x-go-name: Message
     type: object
-    x-go-package: github.com/Deeptiman/go-cache/database
+    x-go-package: github.com/Deeptiman/go-cache-kubernetes/database
   ValidationError:
     description: ValidationError is a collection of validation error messages
     properties:
@@ -21,7 +21,7 @@ definitions:
         type: array
         x-go-name: Messages
     type: object
-    x-go-package: github.com/Deeptiman/go-cache/database  
+    x-go-package: github.com/Deeptiman/go-cache-kubernetes/database  
   Employee:
     description: Employee defines the structure for an API employee
     properties:
@@ -65,7 +65,7 @@ definitions:
     - occupation
     - salary
     type: object
-    x-go-package: github.com/Deeptiman/go-cache/database
+    x-go-package: github.com/Deeptiman/go-cache-kubernetes/database
   Success:
     description: Employee created successfully
     properties:
@@ -75,7 +75,7 @@ definitions:
         type: string
         x-go-name: Name
     type: object
-    x-go-package: github.com/Deeptiman/go-cache/database
+    x-go-package: github.com/Deeptiman/go-cache-kubernetes/database
 info:
   description: Documentation for Employee API
   title: Employee API
