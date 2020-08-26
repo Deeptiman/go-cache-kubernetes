@@ -79,9 +79,22 @@ To begin the deployment process start the minikube
  1. Go Web App
 This will load the web app Docker image in the cluster.	
 
-<p><b>Name<b/>: go-cache-poc</p>
-<p><b>Kind</b>: Deployment</p>
-<p><b>YAML</b>: go-cache-poc-app.yaml</p>
+<table class="table table-striped table-bordered">
+<tbody>
+<tr>
+	<td><b>Name</b></td>
+	<td>go-cache-poc</td>
+</tr>
+<tr>
+	<td><b>Kind</b></td>
+	<td>Deployment</td>
+</tr>
+<tr>
+	<td><b>YAML</b></td>
+	<td>go-cache-poc-app.yaml</td>
+</tr>
+</tbody>
+</table>
 
 **Command to deploy**
 
@@ -97,9 +110,24 @@ Three pods are running under this deployment.
 
  - Go Web App Service
  This service will create an external endpoint using a LoadBalancer.
- <p><b>Name</b>: go-cache-poc-service</p>
- <p><b>Kind</b>: Service</p>
- <p><b>YAML</b>: go-cache-poc-svc.yaml</p>
+
+<table class="table table-striped table-bordered">
+<tbody>
+<tr>
+	<td><b>Name</b></td>
+	<td>go-cache-poc-service</td>
+</tr>
+<tr>
+	<td><b>Kind</b></td>
+	<td>Service</td>
+</tr>
+<tr>
+	<td><b>YAML</b></td>
+	<td>go-cache-poc-svc.yaml</td>
+</tr>
+</tbody>
+</table>
+
  
 **Command to deploy**
 
@@ -115,9 +143,23 @@ Kubernetes provides a feature that will allow us to create a stateful applicatio
 
  - **MongoDB StorageClass**
  This will create the StorageClass that will be used for the storage
-<p><b>Name</b>: mongodb-storage</p>
-<p><b>Kind</b>: StorageClass</p>
-<p><b>YAML</b>: mongodb-storage.yaml</p>
+<table class="table table-striped table-bordered">
+<tbody>
+<tr>
+	<td><b>Name</b></td>
+	<td>mongodb-storage</td>
+</tr>
+<tr>
+	<td><b>Kind</b></td>
+	<td>StorageClass</td>
+</tr>
+<tr>
+	<td><b>YAML</b></td>
+	<td>mongodb-storage.yaml</td>
+</tr>
+</tbody>
+</table>
+
 
 Command to deploy
 
@@ -125,9 +167,23 @@ Command to deploy
 
  - **MongoDB service**
 This will create the StatefulSet app and the Mongo services in the cluster.
-<p><b>Name**: mongodb-svc</p>
-<p><b>Kind**: StatefulSet, Service</p>	
-<p><b>YAML**: mongodb-app-svc.yaml</p>
+<table class="table table-striped table-bordered">
+<tbody>
+<tr>
+	<td><b>Name</b></td>
+	<td>mongodb-svc</td>
+</tr>
+<tr>
+	<td><b>Kind</b></td>
+	<td>StatefulSet, Service</td>
+</tr>
+<tr>
+	<td><b>YAML</b></td>
+	<td>mongodb-app-svc.yaml</td>
+</tr>
+</tbody>
+</table>
+
 Command to deploy
 
 	   $ kubectl apply -f mongodb-app-svc.yaml
@@ -170,21 +226,57 @@ So, now the MongoDB is complete setup with ReplicaSet and with an Administrator 
  - Deploy Redis in Kubernetes
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
 	 - **Connection URI**
-		<p>Local:  localhost:6379</p>
-		<p>Server: redis.default.svc.cluster.local:6379</p>
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Local</b></td>
+		<td>localhost:6379</td>
+	</tr>
+	<tr>
+		<td><b>Server</b></td>
+		<td>redis.default.svc.cluster.local:6379</td>
+	</tr>	 
+	</tbody>
+	</table>
 	 - **Redis Deployment**
-		 <p><b>Name</b>: redis-app</p>
-	     	 <p><b>Kind</b>: Deployment</p>
-		 <p><b>YAML</b>: redis-deployment.yaml</p>
-
+		<table class="table table-striped table-bordered">
+		  <tbody>
+			<tr>
+				<td><b>Name</b></td>
+				<td>redis-app</td>
+			</tr>
+			<tr>
+				<td><b>Kind</b></td>
+				<td>Deployment</td>
+			</tr>
+			<tr>
+				<td><b>YAML</b></td>
+				<td>redis-deployment.yaml</td>
+			</tr>
+		  </tbody>
+		</table>
 	Command to deploy
 	 	
 	$ kubectl apply -f redis-deployment.yaml
 		
    - **Redis Service**
-	     <p><b>Name</b>: redis-service</p>
-	     <p><b>Kind</b>: Service</p>
-	     <p><b>YAML</b>: redis-service.yaml</p>
+   		<table class="table table-striped table-bordered">
+		  <tbody>
+			<tr>
+				<td><b>Name</b></td>
+				<td>redis-service</td>
+			</tr>
+			<tr>
+				<td><b>Kind</b></td>
+				<td>Service</td>
+			</tr>
+			<tr>
+				<td><b>YAML</b></td>
+				<td>redis-service.yaml</td>
+			</tr>
+		  </tbody>
+		</table>
+	   
 	     
 Command to deploy
 	 	
@@ -195,52 +287,107 @@ There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookee
 
  - **Deploy Zookeeper**
 There will be deployment and service similar to the other Pods running in the cluster.
-
 	 - **zookeeper-deployment**
-		  Name: zookeeper-app
-	      Kind: Deployment
-	      YAML: zookeeper-deployment.yaml
+	 <table class="table table-striped table-bordered">
+		  <tbody>
+			<tr>
+				<td><b>Name</b></td>
+				<td>zookeeper-app</td>
+			</tr>
+			<tr>
+				<td><b>Kind</b></td>
+				<td>Deployment</td>
+			</tr>
+			<tr>
+				<td><b>YAML</b></td>
+				<td>zookeeper-deployment.yaml</td>
+			</tr>
+		  </tbody>
+		</table>
+		 
 Command to deploy
 	 	
 		    $ kubectl apply -f zookeeper-deployment.yaml
-
-	 - **zookeeper-service**
-		  Name: zookeeper-service
-	      Kind: Service
-	      YAML: zookeeper-service.yaml
-	Command to deploy
+		    
+ - **zookeeper-service**
+ <table class="table table-striped table-bordered">
+		  <tbody>
+			<tr>
+				<td><b>Name</b></td>
+				<td>zookeeper-service</td>
+			</tr>
+			<tr>
+				<td><b>Kind</b></td>
+				<td>Service</td>
+			</tr>
+			<tr>
+				<td><b>YAML</b></td>
+				<td>zookeeper-service.yaml</td>
+			</tr>
+		  </tbody>
+		</table>
+		 
+Command to deploy
 	 	
 		    $ kubectl apply -f zookeeper-service.yaml
 		    
-
-	 - **Deploy Kafka**
+- **Deploy Kafka**
 	 
 
-		 - **kafka-service**
-		    Name: kafka-service
-	        Kind: Service
-	        YAML: kafka-service.yaml
+	- **kafka-service**
+	<table class="table table-striped table-bordered">
+		  <tbody>
+			<tr>
+				<td><b>Name</b></td>
+				<td>kafka-service</td>
+			</tr>
+			<tr>
+				<td><b>Kind</b></td>
+				<td>Service</td>
+			</tr>
+			<tr>
+				<td><b>YAML</b></td>
+				<td>kafka-service.yaml</td>
+			</tr>
+		  </tbody>
+		</table>
+		   
 	        Command to deploy
 	 	
 				$ kubectl apply -f kafka-service.yaml
 
-		 - **kafka-replication-controller**
-			  Name: kafka-repcon
-		      Kind: Deployment
-		      YAML: kafka-repcon.yaml
+	- **kafka-replication-controller**
+	<table class="table table-striped table-bordered">
+		  <tbody>
+			<tr>
+				<td><b>Name</b></td>
+				<td>kafka-repcon</td>
+			</tr>
+			<tr>
+				<td><b>Kind</b></td>
+				<td>Deployment</td>
+			</tr>
+			<tr>
+				<td><b>YAML</b></td>
+				<td>kafka-repcon.yaml</td>
+			</tr>
+		  </tbody>
+		</table>
+			  
 	Command to deploy
 	 	
 			    $ kubectl apply -f kafka-repcon.yaml
 		
 
-		 - **Start Zookeeper/Kafka server**
+    - **Start Zookeeper/Kafka server**
 				
-
-			 - **zookeeper server**
-					$ cd kafka/
+	 - **zookeeper server**
+		  
+		  $ cd kafka/
 		  $~/kafka/ bin/zookeeper-server-start.sh config/zookeeper.properties	
 
-		 - **Kafka server**
+	- **Kafka server**
+		 
 		  $ cd kafka/
 		  $~/kafka/ bin/kafka-server-start.sh config/server.properties
 				
@@ -250,11 +397,12 @@ Command to deploy
 The kubectl is a very handy tool while troubleshooting application into the Kubernetes.
 
 **Few useful commands**
-
- 1. kubectl get pods //List all pods
- 2. kubectl describe pods <pod-name> //Inspect a pod
- 3. kubectl logs <pod-name> //Check the logs for a pod
- 4. kubectl exec -ti <pod-name> --bash //Get inside into the pod shell
+<ol>
+	<li> kubectl get pods //List all pods</li>
+	<li> kubectl describe pods <pod-name> //Inspect a pod </li>
+	<li> kubectl logs <pod-name> //Check the logs for a pod </li>
+	<li> kubectl exec -ti <pod-name> --bash //Get inside into the pod shell</li>
+</ol>
 
 ## Swagger API documentation
 
