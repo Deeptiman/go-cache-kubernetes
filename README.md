@@ -136,7 +136,7 @@ This service will create an external endpoint using a LoadBalancer.
 	$ kubectl get services
 	// Need to write
 
- <h3>Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet<h3>
+ <h3>Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet</h3>
 
 
 <p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
