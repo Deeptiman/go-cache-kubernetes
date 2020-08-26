@@ -302,6 +302,8 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 <h3>Deploy Kafka in Kubernetes</h3>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
 <br>
+<p> Please install <a href="https://kafka.apache.org/downloads">Apache Kafka</a> in your local machine and gcloud </p>
+<br>
 <h4>Zookeeper</h4>
 There will be deployment and service similar to the other Pods running in the cluster.
 	 <h5>zookeeper-deployment</h5>
