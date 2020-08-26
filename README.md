@@ -166,7 +166,7 @@ This service will create an external endpoint using a LoadBalancer.
 	<tbody>
 	<tr>
 		<td><b>Name</b></td>
-		<td>mongodb-svc</td>
+		<td>mongodb-service</td>
 	</tr>
 	<tr>
 		<td><b>Kind</b></td>
