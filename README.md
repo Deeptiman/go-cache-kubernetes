@@ -72,14 +72,15 @@ The application uses Docker for container-based development. The docker image ge
 ## Kubernetes Deployment
 There will be several deployments, services that need to be running in the cluster as a Pod. The creation of a Pod requires a YAML file that will specify the kind, spec, containerPort, metadata, volume, and more. So, these parameters will be used to provide resources to the Kubernetes cluster.
 
-**Start minikube**
-To begin the deployment process start the minikube 
+**Start minikube** to begin the deployment process start the minikube 
 	
 	$ minikube start
 
-### Deployment Steps
+<h2> Deployment Steps <h2>
 
-<h2><b> Go Web App</b></h2> This will load the web app Docker image in the cluster.	
+<h3>Deploy Go Web App</h3> 
+
+<br> This will load the web app Docker image in the cluster.	
 
 <table class="table table-striped table-bordered">
 <tbody>
@@ -98,7 +99,7 @@ To begin the deployment process start the minikube
 </tbody>
 </table>
 
-	    $ kubectl apply -f go-cache-poc-app.yaml	
+    $ kubectl apply -f go-cache-poc-app.yaml	
 
 **Verify**
 
@@ -108,7 +109,9 @@ To begin the deployment process start the minikube
 	  
 Three pods are running under this deployment.
 
-<h2p><b> Go Web App Service</b></h2>This service will create an external endpoint using a LoadBalancer.
+<h3>Deploy Go Web App Service</h3>
+
+<br>This service will create an external endpoint using a LoadBalancer.
 
 <table class="table table-striped table-bordered">
 <tbody>
@@ -135,7 +138,7 @@ Three pods are running under this deployment.
 	$ kubectl get services
 	// Need to write
 
- <p><b>3. Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet</b><p>
+ <h3>Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet<h3>
 Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.
 
  - **MongoDB StorageClass** will create the StorageClass that will be used for the storage
@@ -217,7 +220,7 @@ Now create the Admin user
 		 
 So, now the MongoDB is complete setup with ReplicaSet and with an Administrator for the database.
 
-<h2><b> Deploy Redis in Kubernetes</b></h2>
+<h3>Deploy Redis in Kubernetes</h3>
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
 	<p><b>Connection URI</b></p>
 	<table class="table table-striped table-bordered">
@@ -272,10 +275,10 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 	 	
 	 $ kubectl apply -f redis-service.yaml
 
-<h2><b>Deploy Kafka in Kubernetes</b></h2>
+<h3>Deploy Kafka in Kubernetes</h3>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
 <br>
-<h3><b>Deploy Zookeeper</b></h3>
+<h4><b>Deploy Zookeeper</b></h4>
 There will be deployment and service similar to the other Pods running in the cluster.
 <br><br>
 	 <h3><b>zookeeper-deployment</b></h3>
@@ -298,7 +301,7 @@ There will be deployment and service similar to the other Pods running in the cl
 	 	
 		    $ kubectl apply -f zookeeper-deployment.yaml
 		    
- <h3><b>zookeeper-service</b></h3>
+ <h4>zookeeper-service</h4>
  <table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -318,7 +321,7 @@ There will be deployment and service similar to the other Pods running in the cl
 	 	
 		    $ kubectl apply -f zookeeper-service.yaml
 		    
-<h3><b>Deploy Kafka</b></h3>
+<h4>Deploy Kafka</h4>
 	 
 <br>
 <p><b>kafka-service</b></p>
@@ -366,7 +369,7 @@ There will be deployment and service similar to the other Pods running in the cl
 			    $ kubectl apply -f kafka-repcon.yaml
 		
 
-  <h2><b>Start Zookeeper/Kafka server</b></h2>
+<h2>Start Zookeeper/Kafka server</h2>
 <br>
    <p><b>1. zookeeper server</b></p>
 		  
