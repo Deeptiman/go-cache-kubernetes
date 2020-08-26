@@ -92,7 +92,7 @@ This will load the web app Docker image in the cluster.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td>go-cache-poc-app.yaml</td>
+		<td><a href="go-cache-poc-app.yaml">go-cache-poc-app.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
