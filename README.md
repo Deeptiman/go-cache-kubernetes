@@ -52,9 +52,9 @@ Kubernetes provides several tools that can be useful to setup Kubernetes in the 
 The application uses Docker for container-based development. The docker image gets published as a public repository at Docker Hub.
 
  - **Build the image**
-	````````````````````````````````````````````````````````
+
 		$ docker build -t go-cache-poc .
-````````````````````````````````````````````````````````````````
+
  - **Tag the image**
 
 		$ docker tag go-cache-poc deeptiman1991/go-cache-poc-app:1.0.0
