@@ -29,11 +29,13 @@ Kubernetes provides several tools that can be useful to setup Kubernetes in the 
 	 **Installation**
 	    follows with the Hypervisor installation and [Hyperkit](https://minikube.sigs.k8s.io/docs/drivers/hyperkit/) is the recommended virtualization toolkit.   
 
-		sudo install minikube
+		$ sudo install minikube
+		
+		$ minikube start
 	https://kubernetes.io/docs/setup/learning-environment/minikube/
-	<p><b>Quick check</b></p>
+	 
 	
-		minikube start
+		
 
  - **kubectl** command-line tool will work to manage a Kubernetes cluster. The tool will be used to deploy, create, analyze, inspect pods that are running under a Kubernetes cluster.
 
@@ -96,8 +98,6 @@ To begin the deployment process start the minikube
 </tbody>
 </table>
 
-**Command to deploy**
-
 	    $ kubectl apply -f go-cache-poc-app.yaml	
 
 **Verify**
@@ -127,8 +127,6 @@ Three pods are running under this deployment.
 </tbody>
 </table>
 
- 
-**Command to deploy**
 
 	$ kubectl apply -f go-cache-poc-svc.yaml
 	
@@ -158,9 +156,6 @@ Kubernetes provides a feature that will allow us to create a stateful applicatio
 </tbody>
 </table>
 
-
-Command to deploy
-
 	$ kubectl apply -f mongodb-app-svc.yaml
 
  - **MongoDB service** will create the StatefulSet app and the Mongo services in the cluster.
@@ -181,8 +176,6 @@ Command to deploy
 </tbody>
 </table>
 
-Command to deploy
-
 	   $ kubectl apply -f mongodb-app-svc.yaml
 
 #### Define the Administrator
@@ -193,9 +186,11 @@ Command to exec
 	-it: mongo contrainer name
 	-c:  mongo container name
 Bash
-$ hostname -f
+
+  	$ hostname -f
 	     
 	 mongod-app-0.mongodb-svc.default.svc.cluster.local
+
 Mongo Shell
 
 	 $ mongo
@@ -209,7 +204,8 @@ Type to the following query to generate the replica set
 	]}); 	  	
 	 	 
 then verify	
-			    	> rs.status();
+			    	
+	> rs.status();
 
 Now create the Admin user
 
@@ -218,6 +214,7 @@ Now create the Admin user
 		      pwd  : "admin123",
 		      roles: [ { role: "root", db: "admin" } ]
 		 });
+		 
 So, now the MongoDB is complete setup with ReplicaSet and with an Administrator for the database.
 
 <p><b> 4. Deploy Redis in Kubernetes</b></p>
@@ -252,7 +249,6 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 		  </tbody>
 		</table>
-	Command to deploy
 	 	
 	$ kubectl apply -f redis-deployment.yaml
 	
@@ -273,17 +269,15 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 		  </tbody>
 		</table>
-	   
-	     
-Command to deploy
 	 	
 	 $ kubectl apply -f redis-service.yaml
 
-<p><b>7. Deploy Kafka in Kubernetes</b></p>
+<h2><b>Deploy Kafka in Kubernetes</b></h2>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
-
-<p><b>Deploy Zookeeper</b></p>
+<br>
+<h3><b>Deploy Zookeeper</b></h3>
 There will be deployment and service similar to the other Pods running in the cluster.
+<br>
 	 <p><b>zookeeper-deployment</b></p>
 	 <table class="table table-striped table-bordered">
 		  <tbody>
@@ -301,12 +295,10 @@ There will be deployment and service similar to the other Pods running in the cl
 			</tr>
 		  </tbody>
 		</table>
-		 
-Command to deploy
 	 	
 		    $ kubectl apply -f zookeeper-deployment.yaml
 		    
- <p><b>zookeeper-service</b></p>
+ <h3><b>zookeeper-service</b></h3>
  <table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -323,14 +315,12 @@ Command to deploy
 			</tr>
 		  </tbody>
 		</table>
-		 
-Command to deploy
 	 	
 		    $ kubectl apply -f zookeeper-service.yaml
 		    
-<p><b>Deploy Kafka</b></p>
+<h3><b>Deploy Kafka</b></h3>
 	 
-
+<br>
 <p><b>kafka-service</b></p>
 	<table class="table table-striped table-bordered">
 		  <tbody>
@@ -352,7 +342,7 @@ Command to deploy
 	        Command to deploy
 	 	
 				$ kubectl apply -f kafka-service.yaml
-
+<br>
 <p><b>kafka-replication-controller</b></p>
 	<table class="table table-striped table-bordered">
 		  <tbody>
@@ -376,8 +366,8 @@ Command to deploy
 			    $ kubectl apply -f kafka-repcon.yaml
 		
 
-  <p><b>Start Zookeeper/Kafka server</b></p>
-				
+  <h2><b>Start Zookeeper/Kafka server</b></h2>
+<br>
    <p><b>1. zookeeper server</b></p>
 		  
 		  $ cd kafka/
@@ -395,10 +385,27 @@ The kubectl is a very handy tool while troubleshooting application into the Kube
 
 **Few useful commands**
 <ol>
-	<li> kubectl get pods //List all pods</li>
-	<li> kubectl describe pods <pod-name> //Inspect a pod </li>
-	<li> kubectl logs <pod-name> //Check the logs for a pod </li>
-	<li> kubectl exec -ti <pod-name> --bash //Get inside into the pod shell</li>
+	<li> 
+
+		   $ kubectl get pods //List all pods
+	</li>
+
+	<li> 
+
+		$ kubectl describe pods <pod-name> //Inspect a pod 
+
+	</li>
+
+	<li> 
+
+		$ kubectl logs <pod-name> //Check the logs for a pod 
+	</li>
+
+	<li> 
+
+		$ kubectl exec -ti <pod-name> --bash //Get inside into the pod shell
+
+	</li>
 </ol>
 
 ## Swagger API documentation
