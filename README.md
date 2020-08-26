@@ -4,7 +4,7 @@
 	<img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Deeptiman/go-cache-kubernetes"> 
 	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Deeptiman/go-cache-kubernetes"> 
 </p>
-The web application is a Data Caching service designed and implemented using Microservices architecture. The cloud deployment environments are used Kubernetes, Docker, and written in Go programming language. The application also uses a MongoDB as NoSQL database with Redis in-memory database for the caching services.
+The web application is a Data Caching service designed and implemented using microservices architecture. The cloud deployment environments are used Kubernetes, Docker, and written in Go programming language. The application also uses a MongoDB as NoSQL database with Redis in-memory database for the caching services.
 
 ## Features
 
