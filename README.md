@@ -397,4 +397,5 @@ The go-swagger toolkit is integrated for the REST APIs documentation. The API do
 https://github.com/go-swagger/go-swagger
 
 
-
+<h2>License</h2>
+<p>This project is licensed under the <a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/LICENSE">MIT License</a></p>
