@@ -24,10 +24,10 @@ The application is a Data Caching service designed and implemented using Microse
 ## Kubernetes tools
 Kubernetes provides several tools that can be useful to setup Kubernetes in the local environment.
 
- - **minikube**: The tool will run a single-node Kubernetes cluster running inside a Virtual Machine. Virtualization has to be supported in the computer and Hypervisor needed to be enabled.
+ - **minikube** tool will run a single-node Kubernetes cluster running inside a Virtual Machine. Virtualization has to be supported in the computer and Hypervisor needed to be enabled.
 	    
 	 **Installation**
-	    The minikube installation follows with the Hypervisor installation and [Hyperkit](https://minikube.sigs.k8s.io/docs/drivers/hyperkit/) is the recommended virtualization toolkit.   
+	    follows with the Hypervisor installation and [Hyperkit](https://minikube.sigs.k8s.io/docs/drivers/hyperkit/) is the recommended virtualization toolkit.   
 
 		sudo install minikube
 	https://kubernetes.io/docs/setup/learning-environment/minikube/
@@ -35,7 +35,7 @@ Kubernetes provides several tools that can be useful to setup Kubernetes in the 
 	
 		minikube start
 
- - **kubectl**: The kubectl command-line tool will work to manage a Kubernetes cluster. The tool will be used to deploy, create, analyze, inspect pods that are running under a Kubernetes cluster.
+ - **kubectl** command-line tool will work to manage a Kubernetes cluster. The tool will be used to deploy, create, analyze, inspect pods that are running under a Kubernetes cluster.
 
 
 	**Installation**
@@ -140,8 +140,7 @@ Three pods are running under this deployment.
  <p><b>3. Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet</b><p>
 Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.
 
- - **MongoDB StorageClass**
- This will create the StorageClass that will be used for the storage
+ - **MongoDB StorageClass** will create the StorageClass that will be used for the storage
 <table class="table table-striped table-bordered">
 <tbody>
 <tr>
@@ -164,8 +163,7 @@ Command to deploy
 
 	$ kubectl apply -f mongodb-app-svc.yaml
 
- - **MongoDB service**
-This will create the StatefulSet app and the Mongo services in the cluster.
+ - **MongoDB service** will create the StatefulSet app and the Mongo services in the cluster.
 <table class="table table-striped table-bordered">
 <tbody>
 <tr>
@@ -224,7 +222,7 @@ So, now the MongoDB is complete setup with ReplicaSet and with an Administrator 
 
 <p><b> 4. Deploy Redis in Kubernetes</b></p>
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
-	 - **Connection URI**
+	<p><b>Connection URI</b></p>
 	<table class="table table-striped table-bordered">
 	<tbody>
 	<tr>
@@ -237,7 +235,7 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 	</tr>	 
 	</tbody>
 	</table>
-	 - **Redis Deployment**
+	 <p><b>Redis Deployment</b></p>
 		<table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -257,8 +255,8 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 	Command to deploy
 	 	
 	$ kubectl apply -f redis-deployment.yaml
-		
-   - **Redis Service**
+	
+   <p><b>Redis Service</b></p>
    		<table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -284,9 +282,9 @@ Command to deploy
 <p><b>7. Deploy Kafka in Kubernetes</b></p>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
 
- - **Deploy Zookeeper**
+<p><b>Deploy Zookeeper</b></p>
 There will be deployment and service similar to the other Pods running in the cluster.
-	 - **zookeeper-deployment**
+	 <p><b>zookeeper-deployment</b></p>
 	 <table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -308,7 +306,7 @@ Command to deploy
 	 	
 		    $ kubectl apply -f zookeeper-deployment.yaml
 		    
- - **zookeeper-service**
+ <p><b>zookeeper-service</b></p>
  <table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -330,10 +328,10 @@ Command to deploy
 	 	
 		    $ kubectl apply -f zookeeper-service.yaml
 		    
-- **Deploy Kafka**
+<p><b>Deploy Kafka</b></p>
 	 
 
-	- **kafka-service**
+<p><b>kafka-service</b></p>
 	<table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -355,7 +353,7 @@ Command to deploy
 	 	
 				$ kubectl apply -f kafka-service.yaml
 
-	- **kafka-replication-controller**
+<p><b>kafka-replication-controller</b></p>
 	<table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -378,14 +376,14 @@ Command to deploy
 			    $ kubectl apply -f kafka-repcon.yaml
 		
 
-    - **Start Zookeeper/Kafka server**
+  <p><b>Start Zookeeper/Kafka server</b></p>
 				
-	 - **zookeeper server**
+   <p><b>1. zookeeper server</b></p>
 		  
 		  $ cd kafka/
 		  $~/kafka/ bin/zookeeper-server-start.sh config/zookeeper.properties	
 
-	- **Kafka server**
+   <p><b>2. Kafka server</b></p>
 		 
 		  $ cd kafka/
 		  $~/kafka/ bin/kafka-server-start.sh config/server.properties
