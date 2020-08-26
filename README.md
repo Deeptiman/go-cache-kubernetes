@@ -79,7 +79,7 @@ To begin the deployment process start the minikube
 
 ### Deployment Steps
 
-<p><b>1. Go Web App</b></p> This will load the web app Docker image in the cluster.	
+<h2><b> Go Web App</b></h2> This will load the web app Docker image in the cluster.	
 
 <table class="table table-striped table-bordered">
 <tbody>
@@ -108,7 +108,7 @@ To begin the deployment process start the minikube
 	  
 Three pods are running under this deployment.
 
-<p><b>2. Go Web App Service</b></p>This service will create an external endpoint using a LoadBalancer.
+<h2p><b> Go Web App Service</b></h2>This service will create an external endpoint using a LoadBalancer.
 
 <table class="table table-striped table-bordered">
 <tbody>
@@ -217,7 +217,7 @@ Now create the Admin user
 		 
 So, now the MongoDB is complete setup with ReplicaSet and with an Administrator for the database.
 
-<p><b> 4. Deploy Redis in Kubernetes</b></p>
+<h2><b> Deploy Redis in Kubernetes</b></h2>
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
 	<p><b>Connection URI</b></p>
 	<table class="table table-striped table-bordered">
@@ -277,8 +277,8 @@ There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookee
 <br>
 <h3><b>Deploy Zookeeper</b></h3>
 There will be deployment and service similar to the other Pods running in the cluster.
-<br>
-	 <p><b>zookeeper-deployment</b></p>
+<br><br>
+	 <h3><b>zookeeper-deployment</b></h3>
 	 <table class="table table-striped table-bordered">
 		  <tbody>
 			<tr>
@@ -339,7 +339,7 @@ There will be deployment and service similar to the other Pods running in the cl
 		  </tbody>
 		</table>
 		   
-	        Command to deploy
+	         
 	 	
 				$ kubectl apply -f kafka-service.yaml
 <br>
@@ -385,27 +385,14 @@ The kubectl is a very handy tool while troubleshooting application into the Kube
 
 **Few useful commands**
 <ol>
-	<li> 
-
-		   $ kubectl get pods //List all pods
-	</li>
-
-	<li> 
-
-		$ kubectl describe pods <pod-name> //Inspect a pod 
-
-	</li>
-
-	<li> 
-
-		$ kubectl logs <pod-name> //Check the logs for a pod 
-	</li>
-
-	<li> 
-
-		$ kubectl exec -ti <pod-name> --bash //Get inside into the pod shell
-
-	</li>
+	//List all pods
+	<li> kubectl get pods </li>
+	//Inspect a pod
+	<li> kubectl describe pods <pod-name>  </li>
+	//Check the logs for a pod
+	<li> kubectl logs <pod-name>  </li>
+	//Get inside into the pod shell
+	<li> kubectl exec -ti <pod-name> --bash </li>
 </ol>
 
 ## Swagger API documentation
