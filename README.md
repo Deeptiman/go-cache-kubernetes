@@ -7,17 +7,17 @@ The application is a Data Caching service designed and implemented using Microse
  - **MongoDB**: The MongoDB Go driver is implemented to perform several database operations. The installation can be done using the go dependency module.
 		
 		go get go.mongodb.org/mongo-driver/mongo
-	link: https://github.com/mongodb/mongo-go-driver
+	  https://github.com/mongodb/mongo-go-driver
 
  - **Redis Cache**: The **go-redis** library is implemented to integrate the Redis data caching in the application. So, the redis will cache the second GET request while reading the user details.
  
 		go get github.com/go-redis/redis/v8
-	link : https://github.com/go-redis/redis
+	  https://github.com/go-redis/redis
 
  - **Kafka Message Broker**: The confluent-kafka-go is used as a Go client library for Kafka message broker. The library will provide **Producer** and **Consumer** architecture to stream messages to the user for a subscribed topic. So, there will be two REST APIs that the user can use for Producing the messages reading from MongoDB and Consuming or Reading messages from the message broker.
 
 		go get github.com/confluentinc/confluent-kafka-go/kafka
-	link: https://github.com/confluentinc/confluent-kafka-go
+	https://github.com/confluentinc/confluent-kafka-go
 
 	Note: It's recommended to install **confluent-kafka-go v1.4.0**, as the **librdkafka** will come with the bundle and no need to install separately.
 
@@ -30,9 +30,10 @@ Kubernetes provides several tools that can be useful to setup Kubernetes in the 
 	    The minikube installation follows with the Hypervisor installation and [Hyperkit](https://minikube.sigs.k8s.io/docs/drivers/hyperkit/) is the recommended virtualization toolkit.   
 
 		sudo install minikube
-	link: https://kubernetes.io/docs/setup/learning-environment/minikube/
-**Quick check**
-				minikube start
+	https://kubernetes.io/docs/setup/learning-environment/minikube/
+	<p><b>Quick check</b></p>
+	
+		minikube start
 
  - **kubectl**: The kubectl command-line tool will work to manage a Kubernetes cluster. The tool will be used to deploy, create, analyze, inspect pods that are running under a Kubernetes cluster.
 
@@ -41,7 +42,7 @@ Kubernetes provides several tools that can be useful to setup Kubernetes in the 
 	
 	```curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" ```
 
-	link: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+	https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 
 ## Build the Docker images
@@ -76,8 +77,7 @@ To begin the deployment process start the minikube
 
 ### Deployment Steps
 
- 1. Go Web App
-This will load the web app Docker image in the cluster.	
+<p><b>1. Go Web App</b></p> This will load the web app Docker image in the cluster.	
 
 <table class="table table-striped table-bordered">
 <tbody>
@@ -108,8 +108,7 @@ This will load the web app Docker image in the cluster.
 	  
 Three pods are running under this deployment.
 
- - Go Web App Service
- This service will create an external endpoint using a LoadBalancer.
+<p><b>2. Go Web App Service</b></p>This service will create an external endpoint using a LoadBalancer.
 
 <table class="table table-striped table-bordered">
 <tbody>
@@ -138,7 +137,7 @@ Three pods are running under this deployment.
 	$ kubectl get services
 	// Need to write
 
- - Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet
+ <p><b>3. Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet</b><p>
 Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.
 
  - **MongoDB StorageClass**
@@ -223,7 +222,7 @@ Now create the Admin user
 		 });
 So, now the MongoDB is complete setup with ReplicaSet and with an Administrator for the database.
 
- - Deploy Redis in Kubernetes
+<p><b> 4. Deploy Redis in Kubernetes</b></p>
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
 	 - **Connection URI**
 	<table class="table table-striped table-bordered">
@@ -282,7 +281,7 @@ Command to deploy
 	 	
 	 $ kubectl apply -f redis-service.yaml
 
- **7. Deploy Kafka in Kubernetes**
+<p><b>7. Deploy Kafka in Kubernetes</b></p>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
 
  - **Deploy Zookeeper**
