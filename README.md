@@ -5,8 +5,9 @@ The application is a Data Caching service designed and implemented using Microse
 ## Features
 
  - **MongoDB**: The MongoDB Go driver is implemented to perform several database operations. The installation can be done using the go dependency module.
-			go get go.mongodb.org/mongo-driver/mongo
-link: https://github.com/mongodb/mongo-go-driver
+		
+		go get go.mongodb.org/mongo-driver/mongo
+	link: https://github.com/mongodb/mongo-go-driver
 
  - **Redis Cache**: The **go-redis** library is implemented to integrate the Redis data caching in the application. So, the redis will cache the second GET request while reading the user details.
  
