@@ -415,7 +415,7 @@ The kubectl is a very handy tool while troubleshooting application into the Kube
 
 ## Swagger API documentation
 
-The go-swagger toolkit is integrated for the REST APIs documentation. The API doc can be accessible via http://localhost:5000/docs
+The <b>go-swagger</b> toolkit is integrated for the REST APIs documentation. The API doc can be accessible via http://localhost:5000/docs
 
 <p><a href="https://github.com/go-swagger/go-swagger" target="_blank">https://github.com/go-swagger/go-swagger</a></p>
 <p><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/swagger.yaml" target="_blank">swagger.yaml</a></p>
