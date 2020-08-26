@@ -25,7 +25,8 @@ The application is a Data Caching service designed and implemented using Microse
 Kubernetes provides several tools that can be useful to setup Kubernetes in the local environment.
 
  - **minikube**: The tool will run a single-node Kubernetes cluster running inside a Virtual Machine. Virtualization has to be supported in the computer and Hypervisor needed to be enabled.
-	    **Installation**
+	    
+	 **Installation**
 	    The minikube installation follows with the Hypervisor installation and [Hyperkit](https://minikube.sigs.k8s.io/docs/drivers/hyperkit/) is the recommended virtualization toolkit.   
 
 		sudo install minikube
@@ -34,8 +35,10 @@ Kubernetes provides several tools that can be useful to setup Kubernetes in the 
 				minikube start
 
  - **kubectl**: The kubectl command-line tool will work to manage a Kubernetes cluster. The tool will be used to deploy, create, analyze, inspect pods that are running under a Kubernetes cluster.
-**Installation**
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+
+
+	**Installation**
+	```	curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" ```
 
 	link: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
