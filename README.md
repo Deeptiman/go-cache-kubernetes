@@ -49,17 +49,22 @@ Kubernetes provides several tools that can be useful to setup Kubernetes in the 
 The application uses Docker for container-based development. The docker image gets published as a public repository at Docker Hub.
 
  - **Build the image**
-$ docker build -t go-cache-poc .
+	
+		$ docker build -t go-cache-poc .
 
  - **Tag the image**
-$ docker tag go-cache-poc deeptiman1991/go-cache-poc-app:1.0.0
+
+		$ docker tag go-cache-poc deeptiman1991/go-cache-poc-app:1.0.0
 
  - **Login to docker hub**
-$ docker login
-	  Type Username and Password to complete the authentication
+
+		$ docker login
+
+	Type Username and Password to complete the authentication
 
  - **Push the image to docker hub**
-$ docker push deeptiman1991/go-cache-poc:1.0.0
+
+		$ docker push deeptiman1991/go-cache-poc:1.0.0
 
 ## Kubernetes Deployment
 There will be several deployments, services that need to be running in the cluster as a Pod. The creation of a Pod requires a YAML file that will specify the kind, spec, containerPort, metadata, volume, and more. So, these parameters will be used to provide resources to the Kubernetes cluster.
@@ -73,9 +78,10 @@ To begin the deployment process start the minikube
 
  1. Go Web App
 This will load the web app Docker image in the cluster.	
-**Name**: go-cache-poc
-**Kind**: Deployment
-**YAML**: go-cache-poc-app.yaml
+
+<b>Name: go-cache-poc</b>
+<b>Kind: Deployment</b>
+<b>YAML: go-cache-poc-app.yaml</b>
 
 **Command to deploy**
 
