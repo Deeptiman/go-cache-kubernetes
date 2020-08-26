@@ -96,7 +96,7 @@ This will allocate a volume of 1GB storage in the cluster
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_poc/go-cache-poc-pvc.yaml" target="_blank">go-cache-poc-pvc.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_app/go-cache-poc-pvc.yaml" target="_blank">go-cache-poc-pvc.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -119,7 +119,7 @@ This will load the web app Docker image in the cluster.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_poc/go-cache-poc-app.yaml" target="_blank">go-cache-poc-app.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_app/go-cache-poc-app.yaml" target="_blank">go-cache-poc-app.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -150,7 +150,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_poc/go-cache-poc-svc.yaml" target="_blank">go-cache-poc-svc.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_app/go-cache-poc-svc.yaml" target="_blank">go-cache-poc-svc.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
