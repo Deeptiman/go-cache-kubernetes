@@ -1,7 +1,4 @@
 vendor
 vendor.orig
-go-cache
-node.txt
+go-cache-kubernetes
 kompose
-go_fix.sh
-docker_script.sh
