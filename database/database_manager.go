@@ -28,7 +28,7 @@ import (
 )
 
 const (
-	MONGODB_SERVER_CONNECTION_STRING = "mongodb://mongod-app-0.mongodb-svc.default.svc.cluster.local"
+	MONGODB_SERVER_CONNECTION_STRING = "mongodb://mongod-app-0.mongodb-service.default.svc.cluster.local"
 	MONGODB_LOCAL_CONNECTION_STRING  = "mongodb://localhost:27017"
 	MONGODB_DATABASE                 = "records"
 	MONGODB_COLLECTION               = "employees"
