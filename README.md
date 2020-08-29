@@ -1,20 +1,24 @@
 # go-cache-kubernetes
-
-The application is a Data Caching service designed and implemented using Microservices architecture. The cloud deployment environments are used **Kubernetes**, **Docker**, and written in **Go** programming language. The application also uses a **MongoDB** as NoSQL database with **Redis** in-memory database for the caching services.
+<p>     
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Deeptiman/go-cache-kubernetes">
+	<img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Deeptiman/go-cache-kubernetes"> 
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Deeptiman/go-cache-kubernetes"> 
+</p>
+The web application is a Data Caching service designed and implemented using microservices architecture. The cloud deployment environments are used Kubernetes, Docker, and written in Go programming language. The application also uses a MongoDB as NoSQL database with Redis in-memory database for the caching services.
 
 ## Features
 
- - **MongoDB**: The MongoDB Go driver is implemented to perform several database operations. The installation can be done using the go dependency module.
+ - **MongoDB** is implemented to perform several database operations. The installation can be done using the go dependency module.
 		
 		go get go.mongodb.org/mongo-driver/mongo
 	  https://github.com/mongodb/mongo-go-driver
 
- - **Redis Cache**: The **go-redis** library is implemented to integrate the Redis data caching in the application. So, the redis will cache the second GET request while reading the user details.
+ - **Redis Cache** is implemented to integrate the data caching in the application. So, the <b>go-redis</b> will cache the second GET request while reading the user details.
  
 		go get github.com/go-redis/redis/v8
 	  https://github.com/go-redis/redis
 
- - **Kafka Message Broker**: The confluent-kafka-go is used as a Go client library for Kafka message broker. The library will provide **Producer** and **Consumer** architecture to stream messages to the user for a subscribed topic. So, there will be two REST APIs that the user can use for Producing the messages reading from MongoDB and Consuming or Reading messages from the message broker.
+ - **Kafka Message Broker**: The <b>confluent-kafka-go</b> is used as a Go client library for Kafka message broker. The library will provide **Producer** and **Consumer** architecture to stream messages to the user for a subscribed topic. So, there will be two REST APIs that the user can use for Producing the messages reading from MongoDB and Consuming or Reading messages from the message broker.
 
 		go get github.com/confluentinc/confluent-kafka-go/kafka
 	https://github.com/confluentinc/confluent-kafka-go
@@ -92,7 +96,7 @@ This will allocate a volume of 1GB storage in the cluster
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go-cache-poc/go-cache-poc-pvc.yaml" target="_blank">go-cache-poc-pvc.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_app/go-cache-poc-pvc.yaml" target="_blank">go-cache-poc-pvc.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -115,7 +119,7 @@ This will load the web app Docker image in the cluster.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go-cache-poc/go-cache-poc-app.yaml" target="_blank">go-cache-poc-app.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_app/go-cache-poc-app.yaml" target="_blank">go-cache-poc-app.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -146,7 +150,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go-cache-poc/go-cache-poc-svc.yaml" target="_blank">go-cache-poc-svc.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_app/go-cache-poc-svc.yaml" target="_blank">go-cache-poc-svc.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -157,7 +161,6 @@ This service will create an external endpoint using a LoadBalancer.
 **Verify**
 
 	$ kubectl get services
-	// Need to write
 
  <h3>Deploying MongoDB ReplicaSet as a Kubernetes StatefulSet</h3>
 
@@ -208,14 +211,14 @@ This service will create an external endpoint using a LoadBalancer.
 There will be three mongo containers in the cluster. We need to connect to anyone of them to define the administrator.
 Command to exec
 
-	 $ kubectl exec -it mongod-app-0 -c mongod-container bash
-	-it: mongo contrainer name
+	 $ kubectl exec -it mongod-app-0 -c mongod-container-app bash
+	-it: mongo app name
 	-c:  mongo container name
 Bash
 
   	$ hostname -f
 	     
-	 mongod-app-0.mongodb-svc.default.svc.cluster.local
+	 mongod-app-0.mongodb-service.default.svc.cluster.local
 
 Mongo Shell
 
@@ -300,7 +303,7 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 	$ kubectl apply -f redis-service.yaml
 
 <h3>Deploy Kafka in Kubernetes</h3>
-There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script.
+There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script. Please install <a href="https://kafka.apache.org/downloads">Apache Kafka</a> in your local machine and gcloud.
 <br>
 <h4>Zookeeper</h4>
 There will be deployment and service similar to the other Pods running in the cluster.
@@ -415,10 +418,18 @@ The kubectl is a very handy tool while troubleshooting application into the Kube
 
 ## Swagger API documentation
 
-The go-swagger toolkit is integrated for the REST APIs documentation. The API doc can be accessible via http://localhost:5000/docs
+The <b>go-swagger</b> toolkit is integrated for the REST APIs documentation. The API doc can be accessible via http://localhost:5000/docs
 
 <p><a href="https://github.com/go-swagger/go-swagger" target="_blank">https://github.com/go-swagger/go-swagger</a></p>
 <p><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/swagger.yaml" target="_blank">swagger.yaml</a></p>
+
+## More Info
+<ul>
+	<li> <a href="https://kubernetes.io/docs/setup/">Getting started Kubernetes</a> </li>
+	<li> <a href="https://kubernetes.io/docs/tutorials/hello-minikube/">Hello Minikube</a></li>
+	<li> <a href="https://docs.docker.com/get-started/">Docker Documentation</a></li>
+	<li> <a href="https://redocly.github.io/redoc/">Swagger ReDoc</a></li>
+</ul>
 
 <h2>License</h2>
 <p>This project is licensed under the <a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/LICENSE">MIT License</a></p>
