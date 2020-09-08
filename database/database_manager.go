@@ -20,6 +20,7 @@ package database
 import (
 	"context"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/hashicorp/go-hclog"
@@ -28,10 +29,9 @@ import (
 )
 
 const (
-	MONGODB_SERVER_CONNECTION_STRING = "mongodb://mongod-app-0.mongodb-service.default.svc.cluster.local"
-	MONGODB_LOCAL_CONNECTION_STRING  = "mongodb://localhost:27017"
-	MONGODB_DATABASE                 = "records"
-	MONGODB_COLLECTION               = "employees"
+	MONGODB_CONNECTION_STRING = "mongodb://mongod-0.mongodb-service.default.svc.cluster.local"
+	MONGODB_DATABASE          = "records"
+	MONGODB_COLLECTION        = "employees"
 
 	MONGODB_COLLECTION_ID         = "id"
 	MONGODB_COLLECTION_NAME       = "name"
@@ -64,11 +64,13 @@ func InitializeDBManager(log hclog.Logger) *EmployeeDB {
 	return &EmployeeDB{redisCache, log}
 }
 
-func (e *EmployeeDB) mongoServerClient() (*mongo.Client, error) {
+func (e *EmployeeDB) mongoClient() (*mongo.Client, error) {
 
-	client, err := mongo.NewClient(options.Client().ApplyURI(MONGODB_SERVER_CONNECTION_STRING).
+	e.log.Info("MongoDB Server Connect")
+
+	client, err := mongo.NewClient(options.Client().ApplyURI(MONGODB_CONNECTION_STRING).
 		SetAuth(options.Credential{
-			Username: "admin", Password: "admin123",
+			Username: os.Getenv("SECRET_USERNAME"), Password: os.Getenv("SECRET_PASSWORD"),
 		}))
 
 	if err != nil {
@@ -79,23 +81,11 @@ func (e *EmployeeDB) mongoServerClient() (*mongo.Client, error) {
 	return client, nil
 }
 
-func (e *EmployeeDB) monogoLocalClient() (*mongo.Client, error) {
-
-	client, err := mongo.NewClient(options.Client().ApplyURI(MONGODB_LOCAL_CONNECTION_STRING))
-	if err != nil {
-		e.log.Error("Unable to create local mongo client", "error", err.Error())
-		return nil, err
-	}
-	return client, nil
-}
-
 func (e *EmployeeDB) ConnectDB() (*mongo.Client, error) {
 
 	e.log.Info("Connect to MongoDB")
 
-	//client, err := e.mongoServerClient()
-
-	client, err := e.monogoLocalClient()
+	client, err := e.mongoClient()
 	if err != nil {
 		e.log.Error("Unable to create mongo client", "error", err.Error())
 		return nil, err

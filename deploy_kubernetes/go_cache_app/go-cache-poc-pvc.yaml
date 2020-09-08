@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: go-cache-poc-pvc
-  name: go-cache-poc-pvc
+    app: go-cache-kubernetes-pvc-v1-poc
+  name: go-cache-kubernetes-pvc-v1-poc
 spec:
   accessModes:
   - ReadWriteOnce

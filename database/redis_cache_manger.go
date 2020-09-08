@@ -15,13 +15,17 @@ type RedisCache struct {
 }
 
 const (
-	LOCAL_ADDR  = "localhost:6379"
+	LOCAL_ADDR  = "172.17.0.3:31686"
 	SERVER_ADDR = "redis.default.svc.cluster.local:6379"
 )
 
 var ctx = context.Background()
 
 func InitializeCacheClient() (*RedisCache, error) {
+
+	log := hclog.Default()
+
+	log.Info("Initialize Redis", "Connect", LOCAL_ADDR)
 
 	rdsClient := redis.NewClient(&redis.Options{
 		Addr:     LOCAL_ADDR,
@@ -31,9 +35,12 @@ func InitializeCacheClient() (*RedisCache, error) {
 
 	_, err := rdsClient.Ping(ctx).Result()
 	if err != nil {
+		log.Error("Failed to connect", "Redis", err.Error())
 		return nil, fmt.Errorf("Failed to connect to redis client - %s", err.Error())
 	}
-	log := hclog.Default()
+
+	log.Info("Redis Connected", "Success", LOCAL_ADDR)
+
 	return &RedisCache{
 		redisClient: rdsClient,
 		log:         log,

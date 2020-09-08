@@ -1,0 +1,17 @@
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: kafka
+      namespace: kafka-ca1
+      labels:
+        app: kafka
+    spec:
+      ports:
+      - port: 9092
+        name: plaintext
+      - port: 9999
+        name: jmx
+      clusterIP: None
+      selector:
+        app: kafka

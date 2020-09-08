@@ -1,44 +1,42 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.service.type: LoadBalancer
-    kompose.version: 1.19.0 (f63a961c)
-  creationTimestamp: null
+  name: go-cache-kubernetes-app-poc
   labels:
-    io.kompose.service: go-cache-poc
-  name: go-cache-poc
+    app: go-cache-kubernetes-app-poc
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: go-cache-kubernetes-app-poc
   template:
-    metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.service.type: LoadBalancer
-        kompose.version: 1.19.0 (f63a961c)
+    metadata:      
       creationTimestamp: null
       labels:
-        io.kompose.service: go-cache-poc
+        app: go-cache-kubernetes-app-poc
     spec:
       containers:
-      - env:
-        - name: GET_HOST_FROM
-          value: dns
-        image: deeptiman1991/go-cache-poc:1.0.0
-        name: go-cache-poc-container
+      - name: go-cache-kubernetes-container-poc
+        image: deeptiman1991/go-cache-kubernetes-v1:1.0.0
+        env:
+        - name: SECRET_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongosecret
+              key: username
+        - name: SECRET_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongosecret
+              key: password
         ports:
-        - containerPort: 5000
-        resources: {}
-        volumeMounts:
-        - mountPath: /go/src/go-cache-kubernetes
-          name: go-cache-poc-pvc
-      hostname: go-cache-poc-container
+        - containerPort: 5000          
+      hostname: go-cache-kubernetes-app-poc
       restartPolicy: Always
       volumes:
-      - name: go-cache-poc-pvc
+      - name: go-cache-kubernetes-pvc-v1-poc
         persistentVolumeClaim:
-          claimName: go-cache-poc-pvc
+          claimName: go-cache-kubernetes-pvc-v1-poc
 status: {}

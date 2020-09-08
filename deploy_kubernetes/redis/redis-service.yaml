@@ -3,15 +3,10 @@ kind: Service
 metadata:
   name: redis-service
   labels:
-    app: redis-service
-    role: master
-    tier: backend
+    app: redis-service 
 spec:
-  type: LoadBalancer  
   ports:
   - port: 6379
     targetPort: 6379
   selector:
-    app: redis-service
-    role: master
-    tier: backend
+    app: redismod

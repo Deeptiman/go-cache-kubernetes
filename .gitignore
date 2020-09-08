@@ -2,3 +2,4 @@ vendor
 vendor.orig
 go-cache-kubernetes
 kompose
+dump.rdb

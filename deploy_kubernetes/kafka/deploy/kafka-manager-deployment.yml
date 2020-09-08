@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-manager
+  namespace: kafka-ca1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-manager
+  template:
+    metadata:
+      labels:
+        app: kafka-manager
+    spec:
+      containers:
+      - name: kafka-manager
+        image: sheepkiller/kafka-manager@sha256:615f3b99d38aba2d5fdb3fb750a5990ba9260c8fb3fd29c7e776e8c150518b78
+        ports:
+        - containerPort: 9000
+        env:
+        - name: ZK_HOSTS
+          value: "zookeeper-service:2181"

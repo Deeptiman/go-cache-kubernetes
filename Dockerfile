@@ -1,29 +1,15 @@
-FROM golang:1.12 as builder
+FROM golang:latest
 
-# Set Environment Variables
-ENV HOME /app
-ENV GOOS linux
+RUN mkdir -p $GOPATH/src/github.com/go-cache-kubernetes
 
-LABEL maintainer="Deeptiman Pattnaik <pattnaikdeeptiman@gmail.com>"
+WORKDIR $GOPATH/src/github.com/go-cache-kubernetes
 
-WORKDIR /app
-COPY go.mod go.sum ./
-RUN go mod download
-COPY . .
+COPY . $GOPATH/src/github.com/go-cache-kubernetes
 
-# Build app
-RUN go build -a -installsuffix cgo -o main .
+RUN go build -a -installsuffix cgo -o go-cache-kubernetes .
 
-FROM alpine:latest
+CMD ["chmod +x go-cache-kubernetes"]
 
-RUN apk --no-cache add ca-certificates
-    
-
-WORKDIR /root/
-
-# Copy the pre-built binary file from the previous stage
-COPY --from=builder /app/main .
+CMD ["./go-cache-kubernetes"]
 
 EXPOSE 5000
-
-CMD [ "./main" ]
