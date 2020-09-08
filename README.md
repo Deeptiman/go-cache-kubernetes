@@ -61,7 +61,7 @@ The application uses Docker for container-based development. The docker image ge
 
  - **Tag the image**
 
-		$ docker tag go-cache-poc deeptiman1991/go-cache-poc-app:1.0.0
+		$ docker tag go-cache-poc deeptiman1991/go-cache-poc:1.0.0
 
  - **Login to docker hub**
 
