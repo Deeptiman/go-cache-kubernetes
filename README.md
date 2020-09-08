@@ -57,11 +57,11 @@ The application uses Docker for container-based development. The docker image ge
 
  - **Build the image**
 
-		$ docker build -t go-cache-poc .
+		$ docker build -t go-cache-kubernetes-v1 .
 
  - **Tag the image**
 
-		$ docker tag go-cache-poc deeptiman1991/go-cache-poc:1.0.0
+		$ docker tag go-cache-poc deeptiman1991/go-cache-kubernetes-v1:1.0.0
 
  - **Login to docker hub**
 
@@ -71,7 +71,7 @@ The application uses Docker for container-based development. The docker image ge
 
  - **Push the image to docker hub**
 
-		$ docker push deeptiman1991/go-cache-poc:1.0.0
+		$ docker push deeptiman1991/go-cache-kubernetes-v1:1.0.0
 
 ## Kubernetes Deployment
 There will be several deployments, services that need to be running in the cluster as a Pod. The creation of a Pod requires a YAML file that will specify the kind, spec, containerPort, metadata, volume, and more. So, these parameters will be used to provide resources to the Kubernetes cluster.
@@ -167,27 +167,7 @@ This service will create an external endpoint using a LoadBalancer.
 
 <p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
 
- - **MongoDB StorageClass** will create the StorageClass that will be used for the storage
-	<table class="table table-striped table-bordered">
-	<tbody>
-	<tr>
-		<td><b>Name</b></td>
-		<td>mongodb-storage</td>
-	</tr>
-	<tr>
-		<td><b>Kind</b></td>
-		<td>StorageClass</td>
-	</tr>
-	<tr>
-		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-storage.yaml" target="_blank">mongodb-storage.yaml</a></td>
-	</tr>
-	</tbody>
-	</table>
-
-		$ kubectl apply -f mongodb-app-svc.yaml
-
- - **MongoDB service** will create the StatefulSet app and the Mongo services in the cluster.
+ - **MongoDB service** will create the Mongo services in the cluster.
 	<table class="table table-striped table-bordered">
 	<tbody>
 	<tr>
@@ -196,7 +176,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>Kind</b></td>
-		<td>StatefulSet, Service</td>
+		<td>Service</td>
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
@@ -205,7 +185,27 @@ This service will create an external endpoint using a LoadBalancer.
 	</tbody>
 	</table>
 
-	   $ kubectl apply -f mongodb-app-svc.yaml
+	   $ kubectl apply -f mongodb-service.yaml
+	 
+- **MongoDB StatefulSet** will create the StatefulSet app in the cluster.
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Name</b></td>
+		<td>mongodb-service</td>
+	</tr>
+	<tr>
+		<td><b>Kind</b></td>
+		<td>StatefulSet</td>
+	</tr>
+	<tr>
+		<td><b>YAML</b></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-app-svc.yaml" target="_blank">mongodb-app-svc.yaml</a></td>
+	</tr>
+	</tbody>
+	</table>
+
+	   $ kubectl apply -f mongodb-stateful.yaml
 
 #### Define the Administrator
 There will be three mongo containers in the cluster. We need to connect to anyone of them to define the administrator.
@@ -227,9 +227,7 @@ Mongo Shell
 Type to the following query to generate the replica set
 
 	> rs.initiate({_id: "MainRepSet", version: 1, members: [
-		{ _id: 0, host : "mongod-app-0.mongodb-service.default.svc.cluster.local:27017" },
-		{ _id: 1, host : "mongod-app-1.mongodb-service.default.svc.cluster.local:27017" },
-		{ _id: 2, host : "mongod-app-2.mongodb-service.default.svc.cluster.local:27017" }
+		{ _id: 0, host : "mongod-app-0.mongodb-service.default.svc.cluster.local:27017" }
 	]}); 	  	
 	 	 
 then verify	
