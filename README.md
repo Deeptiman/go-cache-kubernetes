@@ -245,7 +245,7 @@ Now create the Admin user
 So, now the MongoDB is complete setup with ReplicaSet and with an Administrator for the database.
 
 <h3>Deploy Redis in Kubernetes</h3>
-There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
+There will be several steps to follow for deploying Redis into the Kubernete cluster. 
 <br><br>
 	<p><b>Download Docker images for Redis</b></p>
 	<p> 
