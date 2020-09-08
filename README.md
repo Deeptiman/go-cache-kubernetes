@@ -86,7 +86,7 @@ The application will be using few MongoDB credentials for database connection. S
  <p> <b> Create Secret literals using kubectl </b> </p>
     <p><code>kubectl create secret generic mongosecret --from-literal='username=admin' --from-literal='password=admin123'</code></p>	
     
- <p> <b> Implement the Secret literal in the pod deployment </b> </p>
+ <p> <b> Implement the Secret literals in the pod deployment </b> </p>
 		
 	    spec:
 	      containers:
