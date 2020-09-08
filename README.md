@@ -180,7 +180,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-service.yaml" target="_blank">mongodb-app-svc.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-service.yaml" target="_blank">mongodb-service.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
@@ -200,7 +200,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-stateful.yaml" target="_blank">mongodb-app-svc.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-stateful.yaml" target="_blank">mongodb-stateful.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
