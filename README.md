@@ -129,10 +129,10 @@ This will load the web app Docker image in the cluster.
 **Verify**
 
 	$ kubectl get deployments
-	NAME           READY   UP-TO-DATE   AVAILABLE   AGE
-	go-cache-poc   3/3     3            3           14s	
+	NAME           		      READY   UP-TO-DATE   AVAILABLE   AGE
+	go-cache-kubernetes-app-poc   1/1     1            1           14s	
 	  
-	Three pods are running under this deployment.
+	There is only one pod is running under this deployment.
 
 <h3>Deploy Go Web App Service</h3>
 
