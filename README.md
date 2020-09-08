@@ -82,27 +82,27 @@ There will be several deployments, services that need to be running in the clust
 
 <h3>Kubernetes Secret Management</h3> 
 The application will be using few MongoDB credentials for database connection. So the username and password will be secure using Secret Management via Environment Variables.
-<br>
+<br><br>
  <p> <b> Create Secret literals using kubectl </b> </p>
     <p><code>kubectl create secret generic mongosecret --from-literal='username=admin' --from-literal='password=admin123'</code></p>	
     
  <p> <b> Implement the Secret literal in the pod deployment </b> </p>
 		
-	spec:
-		containers:
-		  - name: go-cache-kubernetes-container-poc
-		    image: deeptiman1991/go-cache-kubernetes-v1:1.0.0
-			env:
-			- name: SECRET_USERNAME
-			   valueFrom:
-			    secretKeyRef:
-			     name: mongosecret
-			     key: username
-		    	- name: SECRET_PASSWORD
-			   valueFrom:
-			    secretKeyRef:
-			     name: mongosecret
-			     key: password		
+	    spec:
+	      containers:
+	      - name: go-cache-kubernetes-container-poc
+		image: deeptiman1991/go-cache-kubernetes-v1:1.0.0
+		env:
+		- name: SECRET_USERNAME
+		  valueFrom:
+		    secretKeyRef:
+		      name: mongosecret
+		      key: username
+		- name: SECRET_PASSWORD
+		  valueFrom:
+		    secretKeyRef:
+		      name: mongosecret
+		      key: password		
   <table class="table table-striped table-bordered">
 	<tbody>
 	<tr>
