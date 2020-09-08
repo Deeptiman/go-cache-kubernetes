@@ -3,9 +3,9 @@ version: '3'
 services:
 
   go-cache-poc:
-    container_name: go-cache-poc-container
-    image: deeptiman1991/go-cache-poc-app:1.0.0
-    hostname: go-cache-poc-container
+    container_name: go-cache-kubernetes-container-poc
+    image: deeptiman1991/go-cache-kubernetes-v1:1.0.0
+    hostname: go-cache-kubernetes-container-poc
     build:
         context: .
         dockerfile: Dockerfile    
