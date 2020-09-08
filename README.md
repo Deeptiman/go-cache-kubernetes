@@ -84,7 +84,7 @@ There will be several deployments, services that need to be running in the clust
 The application will be using few MongoDB credentials for database connection. So the username and password will be secure using Secret Management via Environment Variables.
 <br><br>
  <p> <b> Create Secret literals using kubectl </b> </p>
-    <p><code>kubectl create secret generic mongosecret --from-literal='username=admin' --from-literal='password=admin123'</code></p>	
+    <p><code>$ kubectl create secret generic mongosecret --from-literal='username=admin' --from-literal='password=admin123'</code></p>	
     
  <p> <b> Implement the Secret literals in the pod deployment </b> </p>
 		
