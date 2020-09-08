@@ -249,7 +249,7 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 <br><br>
 	<p><b>Download Docker images for Redis</b></p>
 	<p> 
-   	   <code>docker run -p 6379:6379 redislabs/redismod</code>	
+   	   <code>$ docker run -p 6379:6379 redislabs/redismod</code>	
 	</p>	
 	 <p><b>Redis Deployment</b></p>
 		<table class="table table-striped table-bordered">
@@ -268,8 +268,7 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 		  </tbody>
 		</table>
-	 	
-	$ kubectl apply -f redis-deployment.yaml
+	 	<p><code>$ kubectl apply -f redis-deployment.yaml</code></p>
 	
    <p><b>Redis Service</b></p>
    		<table class="table table-striped table-bordered">
@@ -291,11 +290,11 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 	<p><code>$ kubectl apply -f redis-service.yaml</code></p>	
 	<p><b>Deploy the redismod image</b></p>
 	<p>
-	  <code>kubectl run redismod --image=redislabs/redismod --port=6379</code>
+	  <code>$ kubectl run redismod --image=redislabs/redismod --port=6379</code>
 	</p>
 	<p><b>Expose the deployment</b></p>
 	<p>
-	  <code>kubectl expose deployment redismod --type=NodePort</code>
+	  <code>$ kubectl expose deployment redismod --type=NodePort</code>
 	</p>
 	<p><b>Now, check for the Redis Connection</b></p>
 	<p>
