@@ -247,19 +247,10 @@ So, now the MongoDB is complete setup with ReplicaSet and with an Administrator 
 <h3>Deploy Redis in Kubernetes</h3>
 There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
 <br><br>
-	<p><b>Connection URI</b></p>
-	<table class="table table-striped table-bordered">
-	<tbody>
-	<tr>
-		<td><b>Local</b></td>
-		<td>localhost:6379</td>
-	</tr>
-	<tr>
-		<td><b>Server</b></td>
-		<td>redis.default.svc.cluster.local:6379</td>
-	</tr>	 
-	</tbody>
-	</table>
+	<p><b>Download Docker images for Redis</b></p>
+	<p> 
+   	   <code>docker run -p 6379:6379 redislabs/redismod</code>	
+	</p>	
 	 <p><b>Redis Deployment</b></p>
 		<table class="table table-striped table-bordered">
 		  <tbody>
@@ -297,8 +288,20 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 		  </tbody>
 		</table>
-	 	
-	$ kubectl apply -f redis-service.yaml
+	<p><code>$ kubectl apply -f redis-service.yaml</code></p>	
+	<p><b>Deploy the redismod image</b></p>
+	<p>
+	  <code>kubectl run redismod --image=redislabs/redismod --port=6379</code>
+	</p>
+	<p><b>Expose the deployment</b></p>
+	<p>
+	  <code>kubectl expose deployment redismod --type=NodePort</code>
+	</p>
+	<p><b>Now, check for the Redis Connection</b></p>
+	<p>
+	  <code>$ redis-cli -u $(minikube service --format "redis://{{.IP}}:{{.Port}}" --url redismod)</code>
+	</p>
+	 <code>You must be getting an ip address with a port that can be used as a connection string for Redis</code>
 
 <h3>Deploy Kafka in Kubernetes</h3>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script. Please install <a href="https://kafka.apache.org/downloads">Apache Kafka</a> in your local machine and gcloud.
