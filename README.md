@@ -61,7 +61,7 @@ The application uses Docker for container-based development. The docker image ge
 
  - **Tag the image**
 
-		$ docker tag go-cache-poc deeptiman1991/go-cache-kubernetes-v1:1.0.0
+		$ docker tag go-cache-kubernetes-v1 deeptiman1991/go-cache-kubernetes-v1:1.0.0
 
  - **Login to docker hub**
 
@@ -245,14 +245,14 @@ This service will create an external endpoint using a LoadBalancer.
 There will be three mongo containers in the cluster. We need to connect to anyone of them to define the administrator.
 Command to exec
 
-	 $ kubectl exec -it mongod-app-0 -c mongod-container-app bash
+	 $ kubectl exec -it mongod-0 -c mongod-container-app bash
 	-it: mongo app name
 	-c:  mongo container name
 Bash
 
   	$ hostname -f
 	     
-	 mongod-app-0.mongodb-service.default.svc.cluster.local
+	 mongod-0.mongodb-service.default.svc.cluster.local
 
 Mongo Shell
 
@@ -261,7 +261,7 @@ Mongo Shell
 Type to the following query to generate the replica set
 
 	> rs.initiate({_id: "MainRepSet", version: 1, members: [
-		{ _id: 0, host : "mongod-app-0.mongodb-service.default.svc.cluster.local:27017" }
+		{ _id: 0, host : "mongod-0.mongodb-service.default.svc.cluster.local:27017" }
 	]}); 	  	
 	 	 
 then verify	
