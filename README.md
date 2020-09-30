@@ -57,11 +57,11 @@ The application uses Docker for container-based development. The docker image ge
 
  - **Build the image**
 
-		$ docker build -t go-cache-poc .
+		$ docker build -t go-cache-kubernetes-v1 .
 
  - **Tag the image**
 
-		$ docker tag go-cache-poc deeptiman1991/go-cache-poc:1.0.0
+		$ docker tag go-cache-kubernetes-v1 deeptiman1991/go-cache-kubernetes-v1:1.0.0
 
  - **Login to docker hub**
 
@@ -71,7 +71,7 @@ The application uses Docker for container-based development. The docker image ge
 
  - **Push the image to docker hub**
 
-		$ docker push deeptiman1991/go-cache-poc:1.0.0
+		$ docker push deeptiman1991/go-cache-kubernetes-v1:1.0.0
 
 ## Kubernetes Deployment
 There will be several deployments, services that need to be running in the cluster as a Pod. The creation of a Pod requires a YAML file that will specify the kind, spec, containerPort, metadata, volume, and more. So, these parameters will be used to provide resources to the Kubernetes cluster.
@@ -80,6 +80,40 @@ There will be several deployments, services that need to be running in the clust
 	
 	$ minikube start
 
+<h3>Kubernetes Secret Management</h3> 
+The application will be using few MongoDB credentials for database connection. So the username and password will be secure using Secret Management via Environment Variables.
+<br><br>
+ <p> <b> Create Secret literals using kubectl </b> </p>
+    <p><code>$ kubectl create secret generic mongosecret --from-literal='username=admin' --from-literal='password=admin123'</code></p>	
+    
+ <p> <b> Implement the Secret literals in the pod deployment </b> </p>
+		
+	    spec:
+	      containers:
+	      - name: go-cache-kubernetes-container-poc
+		image: deeptiman1991/go-cache-kubernetes-v1:1.0.0
+		env:
+		- name: SECRET_USERNAME
+		  valueFrom:
+		    secretKeyRef:
+		      name: mongosecret
+		      key: username
+		- name: SECRET_PASSWORD
+		  valueFrom:
+		    secretKeyRef:
+		      name: mongosecret
+		      key: password		
+  <table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>YAML</b></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/go_cache_app/go-cache-poc-app.yaml#L19" target="_blank">go-cache-poc-app.yaml</a></td>
+	</tr>
+	</tbody>
+	</table>
+</p>	
+<p>So, now SECRET_USERNAME & SECRET_PASSWORD environment variables can be used to connect to the MongoDB database from the application. </p>
+    
 <h3>Deploy PersistentVolumeClaim</h3> 
 
 This will allocate a volume of 1GB storage in the cluster
@@ -129,10 +163,10 @@ This will load the web app Docker image in the cluster.
 **Verify**
 
 	$ kubectl get deployments
-	NAME           READY   UP-TO-DATE   AVAILABLE   AGE
-	go-cache-poc   3/3     3            3           14s	
+	NAME           		      READY   UP-TO-DATE   AVAILABLE   AGE
+	go-cache-kubernetes-app-poc   1/1     1            1           14s	
 	  
-	Three pods are running under this deployment.
+	There is only one pod is running under this deployment.
 
 <h3>Deploy Go Web App Service</h3>
 
@@ -167,27 +201,7 @@ This service will create an external endpoint using a LoadBalancer.
 
 <p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
 
- - **MongoDB StorageClass** will create the StorageClass that will be used for the storage
-	<table class="table table-striped table-bordered">
-	<tbody>
-	<tr>
-		<td><b>Name</b></td>
-		<td>mongodb-storage</td>
-	</tr>
-	<tr>
-		<td><b>Kind</b></td>
-		<td>StorageClass</td>
-	</tr>
-	<tr>
-		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-storage.yaml" target="_blank">mongodb-storage.yaml</a></td>
-	</tr>
-	</tbody>
-	</table>
-
-		$ kubectl apply -f mongodb-app-svc.yaml
-
- - **MongoDB service** will create the StatefulSet app and the Mongo services in the cluster.
+ - **MongoDB service** will create the Mongo services in the cluster.
 	<table class="table table-striped table-bordered">
 	<tbody>
 	<tr>
@@ -196,29 +210,49 @@ This service will create an external endpoint using a LoadBalancer.
 	</tr>
 	<tr>
 		<td><b>Kind</b></td>
-		<td>StatefulSet, Service</td>
+		<td>Service</td>
 	</tr>
 	<tr>
 		<td><b>YAML</b></td>
-		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-app-svc.yaml" target="_blank">mongodb-app-svc.yaml</a></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-service.yaml" target="_blank">mongodb-service.yaml</a></td>
 	</tr>
 	</tbody>
 	</table>
 
-	   $ kubectl apply -f mongodb-app-svc.yaml
+	   $ kubectl apply -f mongodb-service.yaml
+	 
+- **MongoDB StatefulSet** will create the StatefulSet app in the cluster.
+	<table class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td><b>Name</b></td>
+		<td>mongod</td>
+	</tr>
+	<tr>
+		<td><b>Kind</b></td>
+		<td>StatefulSet</td>
+	</tr>
+	<tr>
+		<td><b>YAML</b></td>
+		<td><a href="https://github.com/Deeptiman/go-cache-kubernetes/blob/master/deploy_kubernetes/mongodb/mongodb-stateful.yaml" target="_blank">mongodb-stateful.yaml</a></td>
+	</tr>
+	</tbody>
+	</table>
+
+	   $ kubectl apply -f mongodb-stateful.yaml
 
 #### Define the Administrator
 There will be three mongo containers in the cluster. We need to connect to anyone of them to define the administrator.
 Command to exec
 
-	 $ kubectl exec -it mongod-app-0 -c mongod-container-app bash
+	 $ kubectl exec -it mongod-0 -c mongod-container-app bash
 	-it: mongo app name
 	-c:  mongo container name
 Bash
 
   	$ hostname -f
 	     
-	 mongod-app-0.mongodb-service.default.svc.cluster.local
+	 mongod-0.mongodb-service.default.svc.cluster.local
 
 Mongo Shell
 
@@ -227,9 +261,7 @@ Mongo Shell
 Type to the following query to generate the replica set
 
 	> rs.initiate({_id: "MainRepSet", version: 1, members: [
-		{ _id: 0, host : "mongod-app-0.mongodb-service.default.svc.cluster.local:27017" },
-		{ _id: 1, host : "mongod-app-1.mongodb-service.default.svc.cluster.local:27017" },
-		{ _id: 2, host : "mongod-app-2.mongodb-service.default.svc.cluster.local:27017" }
+		{ _id: 0, host : "mongod-0.mongodb-service.default.svc.cluster.local:27017" }
 	]}); 	  	
 	 	 
 then verify	
@@ -247,21 +279,12 @@ Now create the Admin user
 So, now the MongoDB is complete setup with ReplicaSet and with an Administrator for the database.
 
 <h3>Deploy Redis in Kubernetes</h3>
-There will be deployment and service running in the Kubernetes cluster. The connection string will change the redis client for both local and server environments.
+There will be several steps to follow for deploying Redis into the Kubernete cluster. 
 <br><br>
-	<p><b>Connection URI</b></p>
-	<table class="table table-striped table-bordered">
-	<tbody>
-	<tr>
-		<td><b>Local</b></td>
-		<td>localhost:6379</td>
-	</tr>
-	<tr>
-		<td><b>Server</b></td>
-		<td>redis.default.svc.cluster.local:6379</td>
-	</tr>	 
-	</tbody>
-	</table>
+	<p><b>Download Docker images for Redis</b></p>
+	<p> 
+   	   <code>$ docker run -p 6379:6379 redislabs/redismod</code>	
+	</p>	
 	 <p><b>Redis Deployment</b></p>
 		<table class="table table-striped table-bordered">
 		  <tbody>
@@ -279,8 +302,7 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 		  </tbody>
 		</table>
-	 	
-	$ kubectl apply -f redis-deployment.yaml
+	 	<p><code>$ kubectl apply -f redis-deployment.yaml</code></p>
 	
    <p><b>Redis Service</b></p>
    		<table class="table table-striped table-bordered">
@@ -299,8 +321,20 @@ There will be deployment and service running in the Kubernetes cluster. The conn
 			</tr>
 		  </tbody>
 		</table>
-	 	
-	$ kubectl apply -f redis-service.yaml
+	<p><code>$ kubectl apply -f redis-service.yaml</code></p>	
+	<p><b>Deploy the redismod image</b></p>
+	<p>
+	  <code>$ kubectl run redismod --image=redislabs/redismod --port=6379</code>
+	</p>
+	<p><b>Expose the deployment</b></p>
+	<p>
+	  <code>$ kubectl expose deployment redismod --type=NodePort</code>
+	</p>
+	<p><b>Now, check for the Redis Connection</b></p>
+	<p>
+	  <code>$ redis-cli -u $(minikube service --format "redis://{{.IP}}:{{.Port}}" --url redismod)</code>
+	</p>
+	 <code>You must be getting an ip address with a port that can be used as a connection string for Redis</code>
 
 <h3>Deploy Kafka in Kubernetes</h3>
 There will be a deployment of ZooKeeper, Kafka Service, and running kafka/zookeeper server script. Please install <a href="https://kafka.apache.org/downloads">Apache Kafka</a> in your local machine and gcloud.
@@ -426,6 +460,7 @@ The <b>go-swagger</b> toolkit is integrated for the REST APIs documentation. The
 ## More Info
 <ul>
 	<li> <a href="https://kubernetes.io/docs/setup/">Getting started Kubernetes</a> </li>
+	<li> <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Kubernetes Secret Managements</a> </li>
 	<li> <a href="https://kubernetes.io/docs/tutorials/hello-minikube/">Hello Minikube</a></li>
 	<li> <a href="https://docs.docker.com/get-started/">Docker Documentation</a></li>
 	<li> <a href="https://redocly.github.io/redoc/">Swagger ReDoc</a></li>
