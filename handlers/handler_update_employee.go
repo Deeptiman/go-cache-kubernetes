@@ -6,12 +6,12 @@ import (
 	"github.com/go-cache-kubernetes/database"
 )
 
-// swagger:route GET /api/{id} employees  update_employee
-// Return the employee details for the id
+// swagger:route PUT /api/{id} employees  update_employee
+// Return the updated employee details for the id
 // responses:
 // 		200: employeeResponse
 //		404: errorResponse
-// GET request GetEmployeeByID
+// PUT request UpdateEmployee
 func (h *Handlers) UpdateEmployee(rw http.ResponseWriter, r *http.Request) {
 
 	data := r.Context().Value(KeyEmp{}).(*database.Employee)

@@ -17,20 +17,18 @@ spec:
       labels:
         app: go-cache-kubernetes-app-poc
     spec:
+      serviceAccountName: vault
       containers:
       - name: go-cache-kubernetes-container-poc
         image: deeptiman1991/go-cache-kubernetes-v1:1.0.0
+        imagePullPolicy: Always
         env:
-        - name: SECRET_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mongosecret
-              key: username
-        - name: SECRET_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongosecret
-              key: password
+        - name: VAULT_ADDR
+          value: "http://vault:8200"
+        - name: JWT_PATH
+          value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+        - name: SERVICE_PORT
+          value: "8080"
         ports:
         - containerPort: 5000          
       hostname: go-cache-kubernetes-app-poc

@@ -15,7 +15,7 @@ type RedisCache struct {
 }
 
 const (
-	LOCAL_ADDR  = "172.17.0.3:31686"
+	LOCAL_ADDR  = "172.17.0.2:31594"
 	SERVER_ADDR = "redis.default.svc.cluster.local:6379"
 )
 

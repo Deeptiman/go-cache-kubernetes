@@ -1,0 +1,11 @@
+env:
+        - name: SECRET_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongosecret
+              key: username
+        - name: SECRET_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongosecret
+              key: password

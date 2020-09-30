@@ -1,5 +1,6 @@
 vendor
 vendor.orig
+configs
 go-cache-kubernetes
 kompose
 dump.rdb
