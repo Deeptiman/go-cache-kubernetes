@@ -288,7 +288,7 @@ There will be several steps to follow for deploying Redis into the Kubernete clu
 		  <tbody>
 			<tr>
 				<td><b>Name</b></td>
-				<td>redis-app</td>
+				<td>redismod</td>
 			</tr>
 			<tr>
 				<td><b>Kind</b></td>
