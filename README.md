@@ -237,7 +237,7 @@ This service will create an external endpoint using a LoadBalancer.
 	</tbody>
 	</table>
 
-	   $ kubectl apply -f mongodb-stateful.yaml
+	   $ kubectl apply -f mongodb-statefulset.yaml
 
 #### Define the Administrator
 There will be three mongo containers in the cluster. We need to connect to anyone of them to define the administrator.
