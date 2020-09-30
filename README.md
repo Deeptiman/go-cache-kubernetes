@@ -81,28 +81,24 @@ There will be several deployments, services that need to be running in the clust
 	$ minikube start
 
 <h3>Kubernetes Secret Management</h3> 
-The application will be using few MongoDB credentials for database connection. So the username and password will be secure using Secret Management via Environment Variables.
+The application will be using few MongoDB credentials for database connection. So the username and password will be secure using HashiCorp Vault as static secrets.
 <br><br>
- <p> <b> Create Secret literals using kubectl </b> </p>
-    <p><code>$ kubectl create secret generic mongosecret --from-literal='username=admin' --from-literal='password=admin123'</code></p>	
-    
- <p> <b> Implement the Secret literals in the pod deployment </b> </p>
+ <p>More details explanation on HashiCorp Vault at Medium artile : <a href="">Secrets in Kubernetes and HashiCorp Vault</a> </p>
+ <br><br>
+ <p> <b> Implement the Vault Envs in the pod deployment </b> </p>
 		
 	    spec:
+	      serviceAccountName: vault
 	      containers:
 	      - name: go-cache-kubernetes-container-poc
 		image: deeptiman1991/go-cache-kubernetes-v1:1.0.0
 		env:
-		- name: SECRET_USERNAME
-		  valueFrom:
-		    secretKeyRef:
-		      name: mongosecret
-		      key: username
-		- name: SECRET_PASSWORD
-		  valueFrom:
-		    secretKeyRef:
-		      name: mongosecret
-		      key: password		
+		- name: VAULT_ADDR
+		  value: "http://vault:8200"
+		- name: JWT_PATH
+		  value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+		- name: SERVICE_PORT
+		  value: "8080"		
   <table class="table table-striped table-bordered">
 	<tbody>
 	<tr>
@@ -200,7 +196,9 @@ This service will create an external endpoint using a LoadBalancer.
 
 
 <p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
-
+<br><br>
+<p>More details explanation on MongoDB StatefulSet at Medium article : <a href="">MongoDB StatefulSet in Kubernetes</a> </p>
+<br><br>
  - **MongoDB service** will create the Mongo services in the cluster.
 	<table class="table table-striped table-bordered">
 	<tbody>
