@@ -83,7 +83,7 @@ There will be several deployments, services that need to be running in the clust
 <h3>Kubernetes Secret Management</h3> 
 The application will be using few MongoDB credentials for database connection. So the username and password will be secure using HashiCorp Vault as static secrets.
 <br><br>
- <p>More details explanation on HashiCorp Vault, please check my Medium article : <a href="">Secrets in Kubernetes and HashiCorp Vault</a> </p>
+ <p>More details explanation on HashiCorp Vault, please check my Medium article : <a href="https://medium.com/@deeptiman/secrets-in-kubernetes-and-hashicorp-vault-d04d83d0400b">Secrets in Kubernetes and HashiCorp Vault</a> </p>
  <br>
  <p> <b> Implement the Vault Envs in the pod deployment </b> </p>
 		
@@ -197,7 +197,7 @@ This service will create an external endpoint using a LoadBalancer.
 
 <p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
 <br><br>
-<p>More details explanation on MongoDB StatefulSet, please check my Medium article : <a href="">MongoDB StatefulSet in Kubernetes</a> </p>
+<p>More details explanation on MongoDB StatefulSet, please check my Medium article : <a href="https://medium.com/@deeptiman/mongodb-statefulset-in-kubernetes-87c2f5974821">MongoDB StatefulSet in Kubernetes</a> </p>
 <br>
  - **MongoDB service** will create the Mongo services in the cluster.
 	<table class="table table-striped table-bordered">
