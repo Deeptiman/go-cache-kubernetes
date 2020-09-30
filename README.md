@@ -196,7 +196,7 @@ This service will create an external endpoint using a LoadBalancer.
 
 
 <p>Kubernetes provides a feature that will allow us to create a stateful application in the cluster. There will be a storage class and services running under the cluster that will allow the databases to connect with services and store records in their persistent database.</p>
-<br><br>
+<br>
 <p>More details explanation on MongoDB StatefulSet, please check my Medium article : <a href="https://medium.com/@deeptiman/mongodb-statefulset-in-kubernetes-87c2f5974821">MongoDB StatefulSet in Kubernetes</a> </p>
 <br>
  - **MongoDB service** will create the Mongo services in the cluster.
