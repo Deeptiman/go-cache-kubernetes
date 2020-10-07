@@ -199,7 +199,7 @@ This service will create an external endpoint using a LoadBalancer.
 <br>
 <p>More details explanation on MongoDB StatefulSet, please check my Medium article : <a href="https://medium.com/@deeptiman/mongodb-statefulset-in-kubernetes-87c2f5974821">MongoDB StatefulSet in Kubernetes</a> </p>
 <br>
- - <b>MongoDB service</b> will create the Mongo services in the cluster.
+ <b>MongoDB service</b> will create the Mongo services in the cluster.
 	<table class="table table-striped table-bordered">
 	<tbody>
 	<tr>
@@ -219,7 +219,7 @@ This service will create an external endpoint using a LoadBalancer.
 
 	   $ kubectl apply -f mongodb-service.yaml
 	 
-- **MongoDB StatefulSet** will create the StatefulSet app in the cluster.
+**MongoDB StatefulSet** will create the StatefulSet app in the cluster.
 	<table class="table table-striped table-bordered">
 	<tbody>
 	<tr>
