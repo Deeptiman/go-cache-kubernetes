@@ -243,7 +243,7 @@ This service will create an external endpoint using a LoadBalancer.
 There will be three mongo containers in the cluster. We need to connect to anyone of them to define the administrator.
 Command to exec
 
-	 $ kubectl exec -it mongod-0 -c mongod-container-app bash
+	 $ kubectl exec -it mongod-0 -c mongod-container bash
 	-it: mongo app name
 	-c:  mongo container name
 Bash
