@@ -1,7 +1,8 @@
 package handlers
 
 import (
-	"github.com/go-cache-kubernetes/database"
+	"go-cache-kubernetes/database"
+
 	"github.com/hashicorp/go-hclog"
 )
 

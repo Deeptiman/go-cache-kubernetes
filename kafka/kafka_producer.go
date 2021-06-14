@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"go-cache-kubernetes/database"
+
 	"github.com/confluentinc/confluent-kafka-go/kafka"
-	"github.com/go-cache-kubernetes/database"
 	"github.com/hashicorp/go-hclog"
 )
 

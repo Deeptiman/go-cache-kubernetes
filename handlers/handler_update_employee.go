@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/go-cache-kubernetes/database"
+	"go-cache-kubernetes/database"
 )
 
 // swagger:route PUT /api/{id} employees  update_employee

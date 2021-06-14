@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/go-cache-kubernetes/database"
+	"go-cache-kubernetes/database"
 )
 
 // swagger:route DELETE /api/{id} employees  delete_employee

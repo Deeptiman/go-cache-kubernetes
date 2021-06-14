@@ -4,3 +4,5 @@ configs
 go-cache-kubernetes
 kompose
 dump.rdb
+go.sum
+go.mod
